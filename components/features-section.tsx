@@ -68,22 +68,22 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
   ];
 
   return (
-    <section id="features" className="relative py-24 px-6 lg:px-8 max-w-7xl mx-auto z-10">
+    <section id="features" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
       {/* Frosted Glass Section Header Card matching reference style */}
-      <div className="text-center max-w-4xl mx-auto mb-16 p-8 sm:p-12 rounded-3xl bg-black/40 border border-white/15 backdrop-blur-md shadow-2xl space-y-4">
+      <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 p-6 sm:p-12 rounded-3xl bg-black/40 border border-white/15 backdrop-blur-md shadow-2xl space-y-3 sm:space-y-4">
         <Badge
           variant="outline"
-          className="bg-white/10 border-white/20 text-cyan-300 px-3.5 py-1 text-xs uppercase tracking-wider backdrop-blur-sm font-semibold"
+          className="bg-white/10 border-white/20 text-cyan-300 px-3 py-1 text-[11px] sm:text-xs uppercase tracking-wider backdrop-blur-sm font-semibold"
         >
           <Sparkles className="w-3.5 h-3.5 mr-1.5 inline" />
           The New Standard in Digital Security
         </Badge>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
           What is <span className="metal-text">VaultX</span> &amp; Why It Matters
         </h2>
 
-        <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal max-w-2xl mx-auto">
+        <p className="text-sm sm:text-lg text-slate-200 leading-relaxed font-normal max-w-2xl mx-auto">
           In an era of relentless data breaches and invasive tracking, <strong className="text-white font-semibold">VaultX</strong> gives you uncompromised digital sovereignty. It is your personal encrypted haven for sensitive passwords, confidential notes, private keys, and digital assets.
         </p>
       </div>
@@ -127,20 +127,20 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
       </div>
 
       {/* Showcase Banner Card - Updated with exact Frosted Glass Style from Reference Image */}
-      <div className="rounded-3xl p-8 sm:p-12 bg-black/40 border border-white/15 backdrop-blur-md shadow-2xl relative overflow-hidden">
+      <div className="rounded-3xl p-6 sm:p-12 bg-black/40 border border-white/15 backdrop-blur-md shadow-2xl relative overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
           <div className="space-y-4">
-            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-3 py-1 font-semibold">
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-3 py-1 font-semibold text-[11px] sm:text-xs">
               <ShieldCheck className="w-3.5 h-3.5 mr-1.5 inline" />
               Unbreakable Peace of Mind
             </Badge>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white drop-shadow-sm">
+            <h3 className="text-xl sm:text-3xl font-bold text-white drop-shadow-sm">
               Built for speed, styled with liquid precision.
             </h3>
             <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
               VaultX replaces clunky legacy password utilities with an ultra-fluid, liquid-metal interface. Experience effortless security designed by Hitansh Andraskar that respects your privacy from day one.
             </p>
-            <div className="pt-4 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
               <MetallicButton
                 label="Get VaultX"
                 onClick={onOpenDownload}
@@ -153,39 +153,39 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md backdrop-blur-sm">
-              <div className="text-3xl sm:text-4xl font-black text-white font-mono">
-                256<span className="text-cyan-400 text-lg">bit</span>
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
+            <div className="p-3.5 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md backdrop-blur-sm">
+              <div className="text-2xl sm:text-4xl font-black text-white font-mono">
+                256<span className="text-cyan-400 text-sm sm:text-lg">bit</span>
               </div>
-              <p className="text-xs text-slate-300 mt-1 font-medium">
+              <p className="text-[11px] sm:text-xs text-slate-300 mt-1 font-medium">
                 AES-GCM Encryption
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md backdrop-blur-sm">
-              <div className="text-3xl sm:text-4xl font-black text-white font-mono">
+            <div className="p-3.5 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md backdrop-blur-sm">
+              <div className="text-2xl sm:text-4xl font-black text-white font-mono">
                 0%
               </div>
-              <p className="text-xs text-slate-300 mt-1 font-medium">
+              <p className="text-[11px] sm:text-xs text-slate-300 mt-1 font-medium">
                 Telemetry &amp; Tracking
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md backdrop-blur-sm">
-              <div className="text-3xl sm:text-4xl font-black text-white font-mono">
+            <div className="p-3.5 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md backdrop-blur-sm">
+              <div className="text-2xl sm:text-4xl font-black text-white font-mono">
                 3+
               </div>
-              <p className="text-xs text-slate-300 mt-1 font-medium">
+              <p className="text-[11px] sm:text-xs text-slate-300 mt-1 font-medium">
                 Major Platforms Supported
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md backdrop-blur-sm">
-              <div className="text-3xl sm:text-4xl font-black text-emerald-400 font-mono">
+            <div className="p-3.5 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md backdrop-blur-sm">
+              <div className="text-2xl sm:text-4xl font-black text-emerald-400 font-mono">
                 100%
               </div>
-              <p className="text-xs text-slate-300 mt-1 font-medium">
+              <p className="text-[11px] sm:text-xs text-slate-300 mt-1 font-medium">
                 Zero-Knowledge Privacy
               </p>
             </div>

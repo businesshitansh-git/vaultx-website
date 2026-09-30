@@ -23,24 +23,24 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
   const apkDownloadPath = "/VaultX-Latest.apk";
 
   return (
-    <section id="platforms" className="relative py-24 px-6 lg:px-8 max-w-7xl mx-auto z-10">
+    <section id="platforms" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
       {/* Frosted Glass Section Header Card matching reference style */}
-      <div className="text-center max-w-4xl mx-auto mb-16 p-8 sm:p-12 rounded-3xl bg-black/40 border border-white/15 backdrop-blur-md shadow-2xl space-y-4">
+      <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 p-6 sm:p-12 rounded-3xl bg-black/40 border border-white/15 backdrop-blur-md shadow-2xl space-y-3 sm:space-y-4">
         <Badge
           variant="outline"
-          className="bg-white/10 border-white/20 text-cyan-300 px-3.5 py-1 text-xs uppercase tracking-wider backdrop-blur-sm font-semibold"
+          className="bg-white/10 border-white/20 text-cyan-300 px-3 py-1 text-[11px] sm:text-xs uppercase tracking-wider backdrop-blur-sm font-semibold"
         >
           Download &amp; Access
         </Badge>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
           Available Everywhere You Need It
         </h2>
-        <p className="text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl mx-auto">
+        <p className="text-sm sm:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl mx-auto">
           Install the native APK on Android, save the web app to your iPhone home screen via Safari, or launch directly in any desktop browser on Windows.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
         {/* Android Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

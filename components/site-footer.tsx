@@ -10,9 +10,9 @@ export default function SiteFooter() {
   };
 
   return (
-    <footer className="relative border-t border-white/15 bg-black/40 backdrop-blur-md pt-16 pb-12 overflow-hidden">
+    <footer className="relative border-t border-white/15 bg-black/40 backdrop-blur-md pt-12 sm:pt-16 pb-8 sm:pb-12 overflow-hidden px-4 sm:px-6 lg:px-8">
       {/* Ambient background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-gradient-to-t from-indigo-500/20 via-cyan-500/10 to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[340px] sm:w-[700px] h-[200px] sm:h-[300px] bg-gradient-to-t from-indigo-500/20 via-cyan-500/10 to-transparent blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
@@ -101,9 +101,9 @@ export default function SiteFooter() {
           </p>
 
           {/* Prominent Hitansh credit as requested */}
-          <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-black/50 border border-white/20 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
-            <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
-            <span className="text-xs sm:text-sm font-medium text-slate-200">
+          <div className="flex items-center gap-2 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full bg-black/50 border border-white/20 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 animate-pulse flex-shrink-0" />
+            <span className="text-[11px] sm:text-sm font-medium text-slate-200">
               Designed &amp; developed by{" "}
               <strong className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 font-bold">
                 Hitansh Andraskar

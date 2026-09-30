@@ -92,21 +92,21 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer with Liquid Glass */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-2 mx-auto max-w-7xl bg-black/85 border border-white/15 backdrop-blur-xl rounded-2xl px-6 py-6 space-y-4 shadow-2xl">
+        <div className="md:hidden mt-2 mx-auto max-w-7xl bg-black/90 border border-white/20 backdrop-blur-2xl rounded-2xl p-5 space-y-4 shadow-2xl">
           <nav className="flex flex-col space-y-3">
             <a
               href="#features"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-base font-medium text-slate-300 hover:text-white"
+              className="text-base font-medium text-slate-200 hover:text-white py-1 transition-colors"
             >
               Features
             </a>
             <a
               href="#platforms"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-base font-medium text-slate-300 hover:text-white"
+              className="text-base font-medium text-slate-200 hover:text-white py-1 transition-colors"
             >
               Platforms
             </a>
@@ -114,7 +114,7 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
               href="https://vaultx-by-hitansh.netlify.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base font-medium text-cyan-400 flex items-center gap-1.5"
+              className="text-base font-medium text-cyan-400 flex items-center gap-1.5 py-1"
             >
               <span>Live Web App</span>
               <ExternalLink className="w-4 h-4" />
@@ -128,6 +128,8 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
                 setMobileMenuOpen(false);
                 onOpenDownload();
               }}
+              bandCount={4}
+              zoom={7}
             />
           </div>
         </div>

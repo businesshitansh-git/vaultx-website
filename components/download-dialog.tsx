@@ -40,7 +40,7 @@ export default function DownloadDialog({
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -56,7 +56,7 @@ export default function DownloadDialog({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ type: "spring", duration: 0.5, bounce: 0.15 }}
-          className="relative w-full max-w-2xl rounded-3xl bg-black/85 border border-white/20 backdrop-blur-2xl shadow-[0_0_60px_rgba(0,0,0,0.9)] overflow-hidden z-10 my-auto"
+          className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl bg-black/85 border border-white/20 backdrop-blur-2xl shadow-[0_0_60px_rgba(0,0,0,0.9)] z-10 my-auto"
         >
           {/* Header subtle glow */}
           <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-indigo-500/15 via-cyan-500/10 to-transparent pointer-events-none" />
@@ -64,41 +64,41 @@ export default function DownloadDialog({
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors z-20"
+            className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors z-20"
             aria-label="Close dialog"
           >
             <X className="w-5 h-5" />
           </button>
 
-          <div className="p-6 sm:p-8">
+          <div className="p-4 sm:p-8">
             {/* Title & subtitle */}
-            <div className="text-center mb-6">
+            <div className="text-center mb-5 sm:mb-6">
               <Badge
                 variant="outline"
-                className="mb-2 bg-indigo-950/50 border-indigo-500/30 text-indigo-300 px-3 py-1"
+                className="mb-2 bg-indigo-950/50 border-indigo-500/30 text-indigo-300 px-2.5 py-0.5 text-[11px] sm:text-xs"
               >
                 <Sparkles className="w-3.5 h-3.5 mr-1 text-cyan-400 inline" />
                 Cross-Platform Access
               </Badge>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              <h2 className="text-xl sm:text-3xl font-bold tracking-tight text-white">
                 Get <span className="metal-text">VaultX</span> for Your Device
               </h2>
-              <p className="text-sm sm:text-base text-slate-400 mt-1.5">
+              <p className="text-xs sm:text-base text-slate-400 mt-1">
                 Choose your platform to install or launch VaultX instantly.
               </p>
             </div>
 
             {/* Platform Selector Tabs */}
-            <div className="grid grid-cols-3 gap-2 p-1.5 bg-white/[0.04] rounded-2xl border border-white/10 mb-6">
+            <div className="grid grid-cols-3 gap-1 sm:gap-2 p-1 sm:p-1.5 bg-white/[0.04] rounded-2xl border border-white/10 mb-5 sm:mb-6">
               <button
                 onClick={() => setPlatform("android")}
-                className={`flex items-center justify-center gap-2 py-3 px-3 rounded-xl font-medium text-sm transition-all duration-200 ${
+                className={`flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-2 rounded-xl font-medium text-xs sm:text-sm transition-all duration-200 ${
                   platform === "android"
                     ? "bg-gradient-to-r from-emerald-500/20 to-teal-500/20 text-emerald-300 border border-emerald-500/30 shadow-lg"
                     : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
                 }`}
               >
-                <Smartphone className="w-4 h-4" />
+                <Smartphone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 <span>Android</span>
               </button>
 
