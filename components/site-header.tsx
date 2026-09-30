@@ -99,8 +99,20 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
 
       {/* Mobile Drawer with Liquid Glass */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-2 mx-auto max-w-7xl bg-black/90 border border-white/20 backdrop-blur-2xl rounded-2xl p-5 space-y-4 shadow-2xl">
-          <nav className="flex flex-col space-y-3">
+        <div className="md:hidden mt-2 mx-auto max-w-7xl bg-slate-950/85 border border-white/25 backdrop-blur-2xl rounded-2xl p-5 space-y-4 shadow-2xl relative overflow-hidden">
+          {/* Specular Top Sheen */}
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
+
+          {/* Liquid blurry glow */}
+          <div
+            className="absolute -top-12 left-1/2 -translate-x-1/2 w-72 h-36 rounded-full pointer-events-none opacity-35 blur-2xl"
+            style={{
+              background:
+                "radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, rgba(56, 189, 248, 0.3) 40%, rgba(99, 102, 241, 0.2) 65%, transparent 80%)",
+            }}
+          />
+
+          <nav className="flex flex-col space-y-3 relative z-10">
             <a
               href="#features"
               onClick={() => setMobileMenuOpen(false)}

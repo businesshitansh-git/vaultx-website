@@ -62,8 +62,20 @@ export default function DownloadDialog({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ type: "spring", duration: 0.5, bounce: 0.15 }}
-          className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl bg-black/85 border border-white/20 backdrop-blur-2xl shadow-[0_0_60px_rgba(0,0,0,0.9)] z-10 my-auto"
+          className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl bg-slate-950/85 border border-white/25 backdrop-blur-2xl shadow-[0_0_80px_rgba(0,0,0,0.85)] z-10 my-auto overflow-hidden"
         >
+          {/* Specular Top Sheen */}
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
+
+          {/* Liquid blurry ambient backlight */}
+          <div
+            className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full pointer-events-none opacity-30 blur-3xl"
+            style={{
+              background:
+                "radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, rgba(56, 189, 248, 0.3) 40%, rgba(99, 102, 241, 0.2) 65%, transparent 80%)",
+            }}
+          />
+
           {/* Header subtle glow */}
           <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-indigo-500/15 via-cyan-500/10 to-transparent pointer-events-none" />
 
