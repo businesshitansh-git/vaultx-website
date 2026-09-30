@@ -22,11 +22,16 @@ export default function HomePage() {
   };
 
   return (
-    <main className="relative min-h-screen bg-black text-white selection:bg-white/20 selection:text-white">
-      {/* Top Navigation */}
+    <main className="relative min-h-screen bg-black text-white selection:bg-white/20 selection:text-white overflow-hidden">
+      {/* Ambient background blur lights to eliminate harsh black spots across the site */}
+      <div className="fixed top-1/4 -left-32 w-96 h-96 bg-cyan-600/15 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="fixed top-2/3 -right-32 w-96 h-96 bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="fixed bottom-10 left-1/3 w-80 h-80 bg-violet-600/10 rounded-full blur-[130px] pointer-events-none -z-10" />
+
+      {/* Top Header */}
       <SiteHeader onOpenDownload={() => openDownloadModal("android")} />
 
-      {/* Hero Section with Interactive Floating Liquid Metal Sphere introducing VaultX */}
+      {/* Hero Section with Moving 3D Liquid Metal Sphere that stays visible on scroll */}
       <LiquidMetalHero
         badge="✨ Next-Generation Security Vault"
         title="VaultX Digital Fortress"
@@ -51,7 +56,7 @@ export default function HomePage() {
       {/* Footer with Hitansh Andraskar credits */}
       <SiteFooter />
 
-      {/* Download Dialog Modal */}
+      {/* Multi-Platform Download Dialog */}
       <DownloadDialog
         isOpen={downloadOpen}
         onClose={() => setDownloadOpen(false)}

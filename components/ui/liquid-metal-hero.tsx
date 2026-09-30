@@ -30,27 +30,34 @@ export default function LiquidMetalHero({
 }: LiquidMetalHeroProps) {
   const [mounted, setMounted] = useState(false);
 
-  // Mouse parallax motion for moving the 3D liquid circle
+  // Throttled mouse parallax for lag-free buttery smooth 60fps tracking
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 60, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 60, damping: 20 });
+  const springX = useSpring(mouseX, { stiffness: 45, damping: 25 });
+  const springY = useSpring(mouseY, { stiffness: 45, damping: 25 });
 
-  const orbTranslateX = useTransform(springX, [-0.5, 0.5], [-25, 25]);
-  const orbTranslateY = useTransform(springY, [-0.5, 0.5], [-25, 25]);
+  const orbTranslateX = useTransform(springX, [-0.5, 0.5], [-20, 20]);
+  const orbTranslateY = useTransform(springY, [-0.5, 0.5], [-20, 20]);
 
   useEffect(() => {
     setMounted(true);
 
+    let rafId: number;
     const handleMouseMove = (e: MouseEvent) => {
-      const normalizedX = e.clientX / window.innerWidth - 0.5;
-      const normalizedY = e.clientY / window.innerHeight - 0.5;
-      mouseX.set(normalizedX);
-      mouseY.set(normalizedY);
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const normalizedX = e.clientX / window.innerWidth - 0.5;
+        const normalizedY = e.clientY / window.innerHeight - 0.5;
+        mouseX.set(normalizedX);
+        mouseY.set(normalizedY);
+      });
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(rafId);
+    };
   }, [mouseX, mouseY]);
 
   const containerVariants = {
@@ -58,8 +65,8 @@ export default function LiquidMetalHero({
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.2,
-        staggerChildren: 0.15,
+        delayChildren: 0.15,
+        staggerChildren: 0.12,
       },
     },
   };
@@ -69,40 +76,46 @@ export default function LiquidMetalHero({
     visible: {
       opacity: 1,
       y: 0,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
   const buttonVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
+    hidden: { opacity: 0, scale: 0.92 },
     visible: {
       opacity: 1,
       scale: 1,
+      transition: { duration: 0.5 },
     },
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-24 bg-black">
-      {/* Moving 3D Liquid Metal Sphere - Lag-free optimized size & floating parallax */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-24">
+      {/* Persistent 3D Liquid Metal Sphere - Stays visible as you scroll down */}
       {mounted && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+        <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
           <motion.div
             style={{ x: orbTranslateX, y: orbTranslateY }}
             animate={{
-              y: [-12, 12, -12],
+              y: [-10, 10, -10],
               scale: [1, 1.02, 1],
             }}
             transition={{
               y: { repeat: Infinity, duration: 6, ease: "easeInOut" },
               scale: { repeat: Infinity, duration: 8, ease: "easeInOut" },
             }}
-            className="w-[480px] h-[480px] sm:w-[600px] sm:h-[600px] lg:w-[680px] lg:h-[680px] relative flex items-center justify-center"
+            className="w-[450px] h-[450px] sm:w-[560px] sm:h-[560px] lg:w-[640px] lg:h-[640px] relative flex items-center justify-center will-change-transform"
           >
+            {/* Ambient soft glow aura behind and around the sphere to eliminate harsh blackness */}
+            <div className="absolute -inset-8 rounded-full bg-gradient-to-tr from-cyan-500/25 via-indigo-500/20 to-violet-500/25 blur-3xl pointer-events-none opacity-80" />
+            <div className="absolute -inset-16 rounded-full bg-indigo-600/10 blur-[100px] pointer-events-none" />
+
             <LiquidMetal
               shape="circle"
               scale={0.75}
               colorBack="#000000"
               colorTint="#ffffff"
-              speed={0.8}
+              speed={0.75}
               minPixelRatio={1}
               softness={0.12}
               distortion={0.06}
@@ -190,7 +203,7 @@ export default function LiquidMetalHero({
           {features.length > 0 && (
             <motion.div className="pt-10 sm:pt-14" variants={itemVariants}>
               <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
-                <Card className="bg-white/[0.06] border-white/15 backdrop-blur-xl shadow-2xl max-w-4xl mx-auto rounded-2xl overflow-hidden">
+                <Card className="bg-black/50 border-white/15 backdrop-blur-xl shadow-2xl max-w-4xl mx-auto rounded-2xl overflow-hidden">
                   <div className="p-6 sm:p-8">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {features.map((feature, index) => (
