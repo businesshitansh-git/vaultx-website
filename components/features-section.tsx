@@ -68,11 +68,11 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
 
   return (
     <section id="features" className="relative py-24 px-6 lg:px-8 max-w-7xl mx-auto z-10">
-      {/* High-Contrast Section Header Card */}
-      <div className="text-center max-w-4xl mx-auto mb-16 p-8 sm:p-12 rounded-3xl bg-slate-950/85 border border-white/15 backdrop-blur-2xl shadow-[0_12px_50px_rgba(0,0,0,0.85)] space-y-4">
+      {/* Frosted Glass Section Header Card matching reference style */}
+      <div className="text-center max-w-4xl mx-auto mb-16 p-8 sm:p-12 rounded-3xl bg-black/40 border border-white/15 backdrop-blur-md shadow-2xl space-y-4">
         <Badge
           variant="outline"
-          className="bg-white/10 border-white/20 text-cyan-300 px-3.5 py-1 text-xs uppercase tracking-wider backdrop-blur-md font-semibold"
+          className="bg-white/10 border-white/20 text-cyan-300 px-3.5 py-1 text-xs uppercase tracking-wider backdrop-blur-sm font-semibold"
         >
           <Sparkles className="w-3.5 h-3.5 mr-1.5 inline" />
           The New Standard in Digital Security
@@ -87,7 +87,7 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
         </p>
       </div>
 
-      {/* Feature Grid */}
+      {/* Feature Grid with Matching Frosted Glass Styling */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
         {features.map((feature, idx) => (
           <motion.div
@@ -96,10 +96,10 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
-            whileHover={{ y: -6, transition: { duration: 0.2 } }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
           >
-            <Card className="h-full bg-slate-950/85 border-white/15 hover:border-white/30 backdrop-blur-2xl transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.7)] group relative overflow-hidden rounded-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <Card className="h-full bg-black/40 border-white/15 hover:border-white/30 backdrop-blur-md transition-all duration-300 shadow-xl group relative overflow-hidden rounded-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               
               <CardHeader className="space-y-3 pb-3">
                 <div className="flex items-center justify-between">
@@ -125,10 +125,8 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
         ))}
       </div>
 
-      {/* Why Choose VaultX Highlights Banner */}
-      <div className="rounded-3xl p-8 sm:p-12 bg-slate-950/90 border border-white/15 backdrop-blur-2xl shadow-[0_12px_50px_rgba(0,0,0,0.85)] relative overflow-hidden">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-
+      {/* Showcase Banner Card - Updated with exact Frosted Glass Style from Reference Image */}
+      <div className="rounded-3xl p-8 sm:p-12 bg-black/40 border border-white/15 backdrop-blur-md shadow-2xl relative overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
           <div className="space-y-4">
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-3 py-1 font-semibold">
@@ -153,7 +151,7 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md backdrop-blur-sm">
               <div className="text-3xl sm:text-4xl font-black text-white font-mono">
                 256<span className="text-cyan-400 text-lg">bit</span>
               </div>
@@ -162,7 +160,7 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md backdrop-blur-sm">
               <div className="text-3xl sm:text-4xl font-black text-white font-mono">
                 0%
               </div>
@@ -171,7 +169,7 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md backdrop-blur-sm">
               <div className="text-3xl sm:text-4xl font-black text-white font-mono">
                 3+
               </div>
@@ -180,7 +178,7 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md backdrop-blur-sm">
               <div className="text-3xl sm:text-4xl font-black text-emerald-400 font-mono">
                 100%
               </div>

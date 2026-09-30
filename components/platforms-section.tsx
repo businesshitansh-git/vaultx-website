@@ -24,10 +24,11 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
 
   return (
     <section id="platforms" className="relative py-24 px-6 lg:px-8 max-w-7xl mx-auto z-10">
-      <div className="text-center max-w-4xl mx-auto mb-16 p-8 sm:p-12 rounded-3xl bg-slate-950/85 border border-white/15 backdrop-blur-2xl shadow-[0_12px_50px_rgba(0,0,0,0.85)] space-y-4">
+      {/* Frosted Glass Section Header Card matching reference style */}
+      <div className="text-center max-w-4xl mx-auto mb-16 p-8 sm:p-12 rounded-3xl bg-black/40 border border-white/15 backdrop-blur-md shadow-2xl space-y-4">
         <Badge
           variant="outline"
-          className="bg-white/10 border-white/20 text-cyan-300 px-3.5 py-1 text-xs uppercase tracking-wider backdrop-blur-md font-semibold"
+          className="bg-white/10 border-white/20 text-cyan-300 px-3.5 py-1 text-xs uppercase tracking-wider backdrop-blur-sm font-semibold"
         >
           Download &amp; Access
         </Badge>
@@ -46,10 +47,8 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-3xl bg-slate-950/85 border border-emerald-500/25 p-8 backdrop-blur-2xl flex flex-col justify-between hover:border-emerald-500/50 transition-all duration-300 shadow-[0_10px_40px_rgba(0,0,0,0.7)] relative overflow-hidden group"
+          className="rounded-3xl bg-black/40 border border-emerald-500/25 p-8 backdrop-blur-md flex flex-col justify-between hover:border-emerald-500/50 transition-all duration-300 shadow-xl relative overflow-hidden group"
         >
-          <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all" />
-
           <div className="space-y-6 relative z-10">
             <div className="flex items-center justify-between">
               <div className="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
@@ -102,10 +101,8 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="rounded-3xl bg-slate-950/85 border border-cyan-500/25 p-8 backdrop-blur-2xl flex flex-col justify-between hover:border-cyan-500/50 transition-all duration-300 shadow-[0_10px_40px_rgba(0,0,0,0.7)] relative overflow-hidden group"
+          className="rounded-3xl bg-black/40 border border-cyan-500/25 p-8 backdrop-blur-md flex flex-col justify-between hover:border-cyan-500/50 transition-all duration-300 shadow-xl relative overflow-hidden group"
         >
-          <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all" />
-
           <div className="space-y-6 relative z-10">
             <div className="flex items-center justify-between">
               <div className="w-14 h-14 rounded-2xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
@@ -165,10 +162,8 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="rounded-3xl bg-slate-950/85 border border-indigo-500/25 p-8 backdrop-blur-2xl flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 shadow-[0_10px_40px_rgba(0,0,0,0.7)] relative overflow-hidden group"
+          className="rounded-3xl bg-black/40 border border-indigo-500/25 p-8 backdrop-blur-md flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 shadow-xl relative overflow-hidden group"
         >
-          <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition-all" />
-
           <div className="space-y-6 relative z-10">
             <div className="flex items-center justify-between">
               <div className="w-14 h-14 rounded-2xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400">

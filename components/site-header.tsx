@@ -17,22 +17,23 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled
-          ? "bg-slate-950/80 backdrop-blur-xl border-b border-white/10 shadow-lg py-3"
-          : "bg-transparent py-5"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-3 sm:py-4 px-4 sm:px-8">
+      {/* Frosted Glass Navigation Bar matching reference style */}
+      <div
+        className={`max-w-7xl mx-auto px-6 py-3 rounded-2xl transition-all duration-300 flex items-center justify-between ${
+          scrolled
+            ? "bg-black/60 border border-white/15 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+            : "bg-black/35 border border-white/10 backdrop-blur-md shadow-lg"
+        }`}
+      >
         {/* Logo */}
         <a href="#" className="flex items-center gap-3">
-          <VaultXLogo size={42} showText={true} />
+          <VaultXLogo size={38} showText={true} />
         </a>
 
         {/* Desktop Nav */}
@@ -64,7 +65,7 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
         <div className="hidden md:flex items-center gap-3">
           <Button
             onClick={onOpenDownload}
-            className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl px-5 py-2 font-medium backdrop-blur-md shadow-md flex items-center gap-2 group transition-all"
+            className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl px-5 py-2 font-medium backdrop-blur-sm shadow-md flex items-center gap-2 group transition-all"
           >
             <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
             <span>Get VaultX</span>
@@ -83,7 +84,7 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-slate-950/95 border-b border-white/10 backdrop-blur-2xl px-6 py-6 space-y-4">
+        <div className="md:hidden mt-2 mx-auto max-w-7xl bg-black/85 border border-white/15 backdrop-blur-xl rounded-2xl px-6 py-6 space-y-4 shadow-2xl">
           <nav className="flex flex-col space-y-3">
             <a
               href="#features"
