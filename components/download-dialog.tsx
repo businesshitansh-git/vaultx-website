@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Smartphone,
@@ -32,6 +32,12 @@ export default function DownloadDialog({
   const [platform, setPlatform] = useState<"android" | "ios" | "windows">(
     defaultPlatform
   );
+
+  useEffect(() => {
+    if (defaultPlatform) {
+      setPlatform(defaultPlatform);
+    }
+  }, [defaultPlatform, isOpen]);
 
   const websiteUrl = "https://vaultx-by-hitansh.netlify.app/";
   const apkDownloadPath = "/VaultX-Latest.apk";

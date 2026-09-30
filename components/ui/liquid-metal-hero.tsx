@@ -30,9 +30,22 @@ export default function LiquidMetalHero({
   features = [],
 }: LiquidMetalHeroProps) {
   const [mounted, setMounted] = useState(false);
+  const [inView, setInView] = useState(true);
+  const sectionRef = React.useRef<HTMLElement>(null);
 
   useEffect(() => {
     setMounted(true);
+    if (!sectionRef.current || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, []);
 
   const containerVariants = {
@@ -56,9 +69,9 @@ export default function LiquidMetalHero({
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-24">
-      {/* 90+ FPS Ultra-Optimized 3D Liquid Metal Sphere */}
-      {mounted && (
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden py-24">
+      {/* 120+ FPS Ultra-Optimized 3D Liquid Metal Sphere */}
+      {mounted && inView && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
           {/* Upper Liquid Glass Refraction Glow */}
           <div

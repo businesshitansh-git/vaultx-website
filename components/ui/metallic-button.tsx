@@ -303,8 +303,8 @@ interface MetallicShaderUniforms {
   shiftBlue: number;
 }
 
-const DEFAULT_MIN_PIXEL_RATIO = 2;
-const DEFAULT_MAX_PIXEL_COUNT = 1920 * 1080 * 4;
+const DEFAULT_MIN_PIXEL_RATIO = 1.25;
+const DEFAULT_MAX_PIXEL_COUNT = 320 * 80 * 2;
 
 export function parseColor(value: string): [number, number, number, number] {
   const fallback: [number, number, number, number] = [1, 1, 1, 1];
@@ -475,8 +475,12 @@ class MetallicShaderMount {
 
     if (typeof IntersectionObserver !== "undefined") {
       this.intersectionObserver = new IntersectionObserver(([entry]) => {
+        const wasInViewport = this.isInViewport;
         this.isInViewport = entry?.isIntersecting ?? true;
-        if (this.isInViewport && this.speed !== 0) this.requestRender();
+        if (!wasInViewport && this.isInViewport && this.speed !== 0) {
+          this.lastRenderTime = performance.now();
+          this.requestRender();
+        }
       });
       this.intersectionObserver.observe(this.parent);
     }
@@ -491,7 +495,7 @@ class MetallicShaderMount {
     if (width <= 0 || height <= 0) return;
 
     const dpr = Math.max(1, window.devicePixelRatio || 1);
-    const targetRenderScale = Math.min(Math.max(dpr, DEFAULT_MIN_PIXEL_RATIO), 3);
+    const targetRenderScale = Math.min(dpr, 1.75);
     let targetPixelWidth = Math.round(width) * targetRenderScale;
     let targetPixelHeight = Math.round(height) * targetRenderScale;
 
