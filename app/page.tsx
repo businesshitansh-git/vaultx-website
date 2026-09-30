@@ -23,35 +23,35 @@ export default function HomePage() {
 
   return (
     <main className="relative min-h-screen bg-black text-white selection:bg-white/20 selection:text-white">
-      {/* Top Header */}
+      {/* Top Navigation */}
       <SiteHeader onOpenDownload={() => openDownloadModal("android")} />
 
-      {/* Hero Section - Matching 21st.dev liquid metal sphere hero */}
+      {/* Hero Section with Interactive Floating Liquid Metal Sphere introducing VaultX */}
       <LiquidMetalHero
-        badge="✨ Next Generation UI"
-        title="Fluid Design Excellence"
-        subtitle="Experience the future of web interfaces with liquid metal aesthetics that adapt, flow, and captivate. Built for modern applications that demand both beauty and performance."
-        primaryCtaLabel="Start Building"
-        secondaryCtaLabel="View Examples"
+        badge="✨ Next-Generation Security Vault"
+        title="VaultX Digital Fortress"
+        subtitle="The fluid, zero-knowledge personal security vault engineered to safeguard your passwords, private notes, and digital life. Total privacy, absolute sovereignty."
+        primaryCtaLabel="Download VaultX"
+        secondaryCtaLabel="Launch Web App"
         onPrimaryCtaClick={() => openDownloadModal("android")}
         onSecondaryCtaClick={handleLaunchWebApp}
         features={[
-          "Seamless Animations",
-          "Responsive Excellence",
-          "Modern Architecture",
+          "Zero-Knowledge Privacy",
+          "Military AES-256 Encryption",
+          "Cross-Platform Sync",
         ]}
       />
 
-      {/* Product Information & What is VaultX */}
+      {/* Product Details & What is VaultX */}
       <FeaturesSection onOpenDownload={() => openDownloadModal("android")} />
 
-      {/* Platform Download Hub */}
+      {/* Multi-Platform Download Section */}
       <PlatformsSection onOpenIosGuide={() => openDownloadModal("ios")} />
 
       {/* Footer with Hitansh Andraskar credits */}
       <SiteFooter />
 
-      {/* Multi-Platform Download Dialog */}
+      {/* Download Dialog Modal */}
       <DownloadDialog
         isOpen={downloadOpen}
         onClose={() => setDownloadOpen(false)}
