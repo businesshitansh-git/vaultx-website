@@ -23,18 +23,18 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
   const apkDownloadPath = "/VaultX-Latest.apk";
 
   return (
-    <section id="platforms" className="relative py-24 px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+    <section id="platforms" className="relative py-24 px-6 lg:px-8 max-w-7xl mx-auto z-10">
+      <div className="text-center max-w-4xl mx-auto mb-16 p-8 sm:p-12 rounded-3xl bg-slate-950/85 border border-white/15 backdrop-blur-2xl shadow-[0_12px_50px_rgba(0,0,0,0.85)] space-y-4">
         <Badge
           variant="outline"
-          className="bg-white/5 border-white/10 text-cyan-300 px-3.5 py-1 text-xs uppercase tracking-wider backdrop-blur-md"
+          className="bg-white/10 border-white/20 text-cyan-300 px-3.5 py-1 text-xs uppercase tracking-wider backdrop-blur-md font-semibold"
         >
           Download &amp; Access
         </Badge>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
           Available Everywhere You Need It
         </h2>
-        <p className="text-base sm:text-lg text-slate-300 font-light leading-relaxed">
+        <p className="text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl mx-auto">
           Install the native APK on Android, save the web app to your iPhone home screen via Safari, or launch directly in any desktop browser on Windows.
         </p>
       </div>
@@ -46,28 +46,28 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-3xl bg-slate-950/70 border border-emerald-500/20 p-8 backdrop-blur-xl flex flex-col justify-between hover:border-emerald-500/40 transition-all duration-300 shadow-xl relative overflow-hidden group"
+          className="rounded-3xl bg-slate-950/85 border border-emerald-500/25 p-8 backdrop-blur-2xl flex flex-col justify-between hover:border-emerald-500/50 transition-all duration-300 shadow-[0_10px_40px_rgba(0,0,0,0.7)] relative overflow-hidden group"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all" />
 
           <div className="space-y-6 relative z-10">
             <div className="flex items-center justify-between">
-              <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+              <div className="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
                 <Smartphone className="w-7 h-7" />
               </div>
-              <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+              <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 font-semibold">
                 APK Direct
               </Badge>
             </div>
 
             <div>
               <h3 className="text-2xl font-bold text-white mb-2">Android</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
+              <p className="text-sm text-slate-300 leading-relaxed font-normal">
                 Full native APK package. Direct installation on any Android phone or tablet without store restrictions.
               </p>
             </div>
 
-            <ul className="space-y-2 text-xs text-slate-300">
+            <ul className="space-y-2 text-xs text-slate-200">
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 <span>Package: VaultX-Latest.apk (~85 MB)</span>
@@ -102,28 +102,28 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="rounded-3xl bg-slate-950/70 border border-cyan-500/20 p-8 backdrop-blur-xl flex flex-col justify-between hover:border-cyan-500/40 transition-all duration-300 shadow-xl relative overflow-hidden group"
+          className="rounded-3xl bg-slate-950/85 border border-cyan-500/25 p-8 backdrop-blur-2xl flex flex-col justify-between hover:border-cyan-500/50 transition-all duration-300 shadow-[0_10px_40px_rgba(0,0,0,0.7)] relative overflow-hidden group"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all" />
 
           <div className="space-y-6 relative z-10">
             <div className="flex items-center justify-between">
-              <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+              <div className="w-14 h-14 rounded-2xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
                 <Apple className="w-7 h-7" />
               </div>
-              <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30">
+              <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 font-semibold">
                 Home Screen PWA
               </Badge>
             </div>
 
             <div>
               <h3 className="text-2xl font-bold text-white mb-2">iPhone &amp; iPad</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
+              <p className="text-sm text-slate-300 leading-relaxed font-normal">
                 Add directly to your iOS Home Screen via Safari. Delivers a native standalone full-screen experience.
               </p>
             </div>
 
-            <ul className="space-y-2 text-xs text-slate-300">
+            <ul className="space-y-2 text-xs text-slate-200">
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400" />
                 <span>Open in Safari browser</span>
@@ -152,7 +152,7 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
               href={websiteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-center text-xs text-cyan-400/80 hover:text-cyan-300 py-1"
+              className="block text-center text-xs text-cyan-300 hover:text-cyan-200 py-1 font-medium"
             >
               Or open website directly &rarr;
             </a>
@@ -165,28 +165,28 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="rounded-3xl bg-slate-950/70 border border-indigo-500/20 p-8 backdrop-blur-xl flex flex-col justify-between hover:border-indigo-500/40 transition-all duration-300 shadow-xl relative overflow-hidden group"
+          className="rounded-3xl bg-slate-950/85 border border-indigo-500/25 p-8 backdrop-blur-2xl flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 shadow-[0_10px_40px_rgba(0,0,0,0.7)] relative overflow-hidden group"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition-all" />
 
           <div className="space-y-6 relative z-10">
             <div className="flex items-center justify-between">
-              <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+              <div className="w-14 h-14 rounded-2xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
                 <Monitor className="w-7 h-7" />
               </div>
-              <Badge className="bg-indigo-500/20 text-indigo-300 border-indigo-500/30">
+              <Badge className="bg-indigo-500/20 text-indigo-300 border-indigo-500/30 font-semibold">
                 Web &amp; Desktop
               </Badge>
             </div>
 
             <div>
               <h3 className="text-2xl font-bold text-white mb-2">Windows &amp; PC</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
+              <p className="text-sm text-slate-300 leading-relaxed font-normal">
                 Launch instantly inside Chrome, Edge, Brave, or Firefox, or install as a progressive desktop application.
               </p>
             </div>
 
-            <ul className="space-y-2 text-xs text-slate-300">
+            <ul className="space-y-2 text-xs text-slate-200">
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-indigo-400" />
                 <span>Zero installation setup required</span>

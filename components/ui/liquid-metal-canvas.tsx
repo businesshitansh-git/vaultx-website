@@ -5,17 +5,13 @@ import React, { useEffect, useRef } from "react";
 interface LiquidMetalCanvasProps {
   className?: string;
   style?: React.CSSProperties;
-  colorBack?: string;
-  colorTint?: string;
   speed?: number;
 }
 
 export default function LiquidMetalCanvas({
   className = "",
   style = {},
-  colorBack = "#05070d",
-  colorTint = "#cbd5e1",
-  speed = 1.0,
+  speed = 0.85,
 }: LiquidMetalCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -39,7 +35,6 @@ export default function LiquidMetalCanvas({
     };
     window.addEventListener("mousemove", handleMouseMove);
 
-    // Vertex shader
     const vsSource = `
       attribute vec2 position;
       varying vec2 vUv;
@@ -49,7 +44,7 @@ export default function LiquidMetalCanvas({
       }
     `;
 
-    // Silky high-precision liquid metal fragment shader (zero noise artifacts, pure fluid chrome)
+    // Deep Dark Chrome Liquid Metal with High-Contrast specular highlights
     const fsSource = `
       precision highp float;
       varying vec2 vUv;
@@ -57,84 +52,73 @@ export default function LiquidMetalCanvas({
       uniform float uTime;
       uniform vec2 uMouse;
 
-      // Smooth 2D rotation
       vec2 rotate(vec2 p, float a) {
         float c = cos(a);
         float s = sin(a);
         return vec2(p.x * c - p.y * s, p.x * s + p.y * c);
       }
 
-      // Smooth sinusoidal turbulence for molten liquid metal
       float liquidField(vec2 p, float t) {
-        vec2 p1 = p * 1.8;
+        vec2 p1 = p * 1.6;
         float v = 0.0;
         
-        v += sin(p1.x * 2.2 + t * 0.7);
-        v += sin(p1.y * 1.9 - t * 0.6);
-        v += sin((p1.x + p1.y) * 1.5 + t * 0.9);
+        v += sin(p1.x * 2.0 + t * 0.6);
+        v += sin(p1.y * 1.8 - t * 0.5);
+        v += sin((p1.x + p1.y) * 1.3 + t * 0.7);
 
-        vec2 p2 = rotate(p1, 0.785) * 1.6;
-        v += sin(p2.x * 2.4 - t * 0.8) * 0.5;
-        v += sin(p2.y * 2.1 + t * 0.7) * 0.5;
+        vec2 p2 = rotate(p1, 0.785) * 1.5;
+        v += sin(p2.x * 2.2 - t * 0.6) * 0.5;
+        v += sin(p2.y * 1.9 + t * 0.5) * 0.5;
 
-        vec2 p3 = rotate(p2, 1.2) * 1.8;
-        v += sin(p3.x * 3.1 + p3.y * 2.7 + t * 1.1) * 0.25;
-
-        // Interactive mouse ripple deflection
+        // Subtle interactive mouse deflection
         float distToMouse = length(p - (uMouse * 2.0 - 1.0));
-        v += exp(-distToMouse * 3.5) * sin(distToMouse * 16.0 - t * 3.0) * 0.4;
+        v += exp(-distToMouse * 3.5) * sin(distToMouse * 14.0 - t * 2.5) * 0.35;
 
         return v;
       }
 
       void main() {
         vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / min(uResolution.x, uResolution.y);
-        float t = uTime * 0.45;
+        float t = uTime * 0.35;
 
-        // Flowing coordinate warp
         vec2 q = uv;
-        q = rotate(q, t * 0.08);
+        q = rotate(q, t * 0.05);
 
         float field1 = liquidField(q, t);
-        float field2 = liquidField(q + vec2(field1 * 0.25, -field1 * 0.2), t * 1.1);
+        float field2 = liquidField(q + vec2(field1 * 0.22, -field1 * 0.18), t * 1.05);
 
-        // Compute high-definition normal vector for specular liquid reflection
+        // Surface normals for specular liquid lighting
         float eps = 0.003;
         float nx = liquidField(q + vec2(eps, 0.0), t) - liquidField(q - vec2(eps, 0.0), t);
         float ny = liquidField(q + vec2(0.0, eps), t) - liquidField(q - vec2(0.0, eps), t);
-        vec3 normal = normalize(vec3(-nx * 2.0, -ny * 2.0, 1.0));
+        vec3 normal = normalize(vec3(-nx * 2.2, -ny * 2.2, 1.0));
 
-        // Light sources: Key light + Ambient liquid reflections
-        vec3 lightDir = normalize(vec3(0.5, 0.8, 1.2));
+        vec3 lightDir = normalize(vec3(0.4, 0.7, 1.3));
         vec3 viewDir = vec3(0.0, 0.0, 1.0);
         vec3 halfDir = normalize(lightDir + viewDir);
 
-        // Diffuse and Specular components
         float diff = max(dot(normal, lightDir), 0.0);
-        float spec = pow(max(dot(normal, halfDir), 0.0), 36.0);
-        float fresnel = pow(1.0 - max(dot(normal, viewDir), 0.0), 3.0);
+        float spec = pow(max(dot(normal, halfDir), 0.0), 32.0);
+        float fresnel = pow(1.0 - max(dot(normal, viewDir), 0.0), 2.5);
 
-        // Liquid metal color palette: deep obsidian slate base with molten platinum & chrome highlights
-        vec3 baseObsidian = vec3(0.02, 0.03, 0.06);
-        vec3 midTitanium  = vec3(0.22, 0.26, 0.33);
-        vec3 highSilver   = vec3(0.85, 0.90, 0.96);
-        vec3 chromePeak   = vec3(1.0, 1.0, 1.0);
+        // Dark Gunmetal / Obsidian liquid base with sleek metallic reflections
+        vec3 deepObsidian = vec3(0.02, 0.03, 0.05);
+        vec3 darkTitanium = vec3(0.09, 0.12, 0.16);
+        vec3 liquidSilver = vec3(0.38, 0.44, 0.52);
+        vec3 chromeGleam  = vec3(0.92, 0.95, 1.0);
+        vec3 cyanElectric = vec3(0.20, 0.55, 0.85);
 
-        // Subtle electric cobalt / silver iridescent rim
-        vec3 cobaltRim    = vec3(0.35, 0.65, 0.95);
+        float band = smoothstep(-1.2, 1.2, field2);
+        vec3 color = mix(deepObsidian, darkTitanium, band);
+        color = mix(color, liquidSilver, smoothstep(0.45, 0.95, diff) * 0.6);
+        color += chromeGleam * spec * 0.85;
+        color += cyanElectric * fresnel * 0.25;
 
-        // Composite molten liquid shading
-        float band = smoothstep(-1.5, 1.5, field2);
-        vec3 liquidColor = mix(baseObsidian, midTitanium, band);
-        liquidColor = mix(liquidColor, highSilver, smoothstep(0.4, 0.95, diff));
-        liquidColor += chromePeak * spec * 1.2;
-        liquidColor += cobaltRim * fresnel * 0.45;
+        // Vignette at edges to focus center text
+        float vignette = 1.0 - smoothstep(0.4, 1.4, length(uv));
+        color *= (0.75 + 0.25 * vignette);
 
-        // Vignette for depth
-        float vignette = 1.0 - smoothstep(0.5, 1.5, length(uv));
-        liquidColor *= (0.8 + 0.2 * vignette);
-
-        gl_FragColor = vec4(liquidColor, 1.0);
+        gl_FragColor = vec4(color, 1.0);
       }
     `;
 
@@ -168,7 +152,6 @@ export default function LiquidMetalCanvas({
 
     gl.useProgram(program);
 
-    // Fullscreen quad buffer
     const positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     gl.bufferData(
@@ -200,7 +183,6 @@ export default function LiquidMetalCanvas({
     window.addEventListener("resize", handleResize);
 
     const render = (time: number) => {
-      // Smooth mouse interpolation
       mouse.x += (mouse.targetX - mouse.x) * 0.05;
       mouse.y += (mouse.targetY - mouse.y) * 0.05;
 

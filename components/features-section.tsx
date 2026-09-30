@@ -67,26 +67,23 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
   ];
 
   return (
-    <section id="features" className="relative py-24 px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-600/10 via-indigo-600/10 to-violet-600/10 blur-[130px] -z-10 pointer-events-none" />
-
-      {/* Section Header: What is VaultX & Why VaultX */}
-      <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+    <section id="features" className="relative py-24 px-6 lg:px-8 max-w-7xl mx-auto z-10">
+      {/* High-Contrast Section Header Card */}
+      <div className="text-center max-w-4xl mx-auto mb-16 p-8 sm:p-12 rounded-3xl bg-slate-950/85 border border-white/15 backdrop-blur-2xl shadow-[0_12px_50px_rgba(0,0,0,0.85)] space-y-4">
         <Badge
           variant="outline"
-          className="bg-white/5 border-white/10 text-cyan-300 px-3.5 py-1 text-xs uppercase tracking-wider backdrop-blur-md"
+          className="bg-white/10 border-white/20 text-cyan-300 px-3.5 py-1 text-xs uppercase tracking-wider backdrop-blur-md font-semibold"
         >
           <Sparkles className="w-3.5 h-3.5 mr-1.5 inline" />
           The New Standard in Digital Security
         </Badge>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
           What is <span className="metal-text">VaultX</span> &amp; Why It Matters
         </h2>
 
-        <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-light">
-          In an era of relentless data breaches and invasive tracking, <strong className="text-white font-medium">VaultX</strong> gives you uncompromised digital sovereignty. It is your personal encrypted haven for sensitive passwords, confidential notes, private keys, and digital assets.
+        <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal max-w-2xl mx-auto">
+          In an era of relentless data breaches and invasive tracking, <strong className="text-white font-semibold">VaultX</strong> gives you uncompromised digital sovereignty. It is your personal encrypted haven for sensitive passwords, confidential notes, private keys, and digital assets.
         </p>
       </div>
 
@@ -101,25 +98,25 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
             transition={{ duration: 0.5, delay: idx * 0.1 }}
             whileHover={{ y: -6, transition: { duration: 0.2 } }}
           >
-            <Card className="h-full bg-slate-950/60 border-white/10 hover:border-white/20 backdrop-blur-xl transition-all duration-300 shadow-xl group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <Card className="h-full bg-slate-950/85 border-white/15 hover:border-white/30 backdrop-blur-2xl transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.7)] group relative overflow-hidden rounded-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               
               <CardHeader className="space-y-3 pb-3">
                 <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     {feature.icon}
                   </div>
-                  <span className="text-[11px] font-semibold text-slate-400 bg-white/5 px-2.5 py-1 rounded-full border border-white/5">
+                  <span className="text-[11px] font-semibold text-slate-300 bg-white/10 px-2.5 py-1 rounded-full border border-white/10">
                     {feature.tag}
                   </span>
                 </div>
-                <CardTitle className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+                <CardTitle className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors drop-shadow-sm">
                   {feature.title}
                 </CardTitle>
               </CardHeader>
               
               <CardContent>
-                <CardDescription className="text-slate-400 text-sm leading-relaxed">
+                <CardDescription className="text-slate-300 text-sm leading-relaxed font-normal">
                   {feature.description}
                 </CardDescription>
               </CardContent>
@@ -129,19 +126,19 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
       </div>
 
       {/* Why Choose VaultX Highlights Banner */}
-      <div className="rounded-3xl p-8 sm:p-12 bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-white/10 backdrop-blur-2xl shadow-2xl relative overflow-hidden">
+      <div className="rounded-3xl p-8 sm:p-12 bg-slate-950/90 border border-white/15 backdrop-blur-2xl shadow-[0_12px_50px_rgba(0,0,0,0.85)] relative overflow-hidden">
         <div className="absolute right-0 top-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
           <div className="space-y-4">
-            <Badge className="bg-emerald-500/15 text-emerald-300 border-emerald-500/25 px-3 py-1">
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-3 py-1 font-semibold">
               <ShieldCheck className="w-3.5 h-3.5 mr-1.5 inline" />
               Unbreakable Peace of Mind
             </Badge>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white drop-shadow-sm">
               Built for speed, styled with liquid precision.
             </h3>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
               VaultX replaces clunky legacy password utilities with an ultra-fluid, liquid-metal interface. Experience effortless security designed by Hitansh Andraskar that respects your privacy from day one.
             </p>
             <div className="pt-2">
@@ -156,38 +153,38 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md">
               <div className="text-3xl sm:text-4xl font-black text-white font-mono">
                 256<span className="text-cyan-400 text-lg">bit</span>
               </div>
-              <p className="text-xs text-slate-400 mt-1 font-medium">
+              <p className="text-xs text-slate-300 mt-1 font-medium">
                 AES-GCM Encryption
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md">
               <div className="text-3xl sm:text-4xl font-black text-white font-mono">
                 0%
               </div>
-              <p className="text-xs text-slate-400 mt-1 font-medium">
+              <p className="text-xs text-slate-300 mt-1 font-medium">
                 Telemetry &amp; Tracking
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md">
               <div className="text-3xl sm:text-4xl font-black text-white font-mono">
                 3+
               </div>
-              <p className="text-xs text-slate-400 mt-1 font-medium">
+              <p className="text-xs text-slate-300 mt-1 font-medium">
                 Major Platforms Supported
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center shadow-md">
               <div className="text-3xl sm:text-4xl font-black text-emerald-400 font-mono">
                 100%
               </div>
-              <p className="text-xs text-slate-400 mt-1 font-medium">
+              <p className="text-xs text-slate-300 mt-1 font-medium">
                 Zero-Knowledge Privacy
               </p>
             </div>
