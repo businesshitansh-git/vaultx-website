@@ -63,18 +63,28 @@ export default function LiquidMetalHero({
     },
   };
 
+  const preset = liquidMetalPresets[2] || liquidMetalPresets[0];
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-24">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-24">
       {mounted && (
         <LiquidMetal
-          {...liquidMetalPresets[2]}
-          style={{ position: "fixed", inset: 0, zIndex: -10 }}
+          {...preset}
+          {...(preset?.params || {})}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 0,
+            pointerEvents: "none",
+            width: "100vw",
+            height: "100vh",
+          }}
         />
       )}
-      
-      {/* Subtle overlay gradient to ensure high readability */}
-      <div 
-        className="fixed inset-0 pointer-events-none -z-[9] bg-gradient-to-b from-black/75 via-black/60 to-black/85 backdrop-blur-[2px]" 
+
+      {/* Subtle glass reflection overlay to amplify the liquid glass effect */}
+      <div
+        className="fixed inset-0 pointer-events-none z-[1] bg-gradient-to-b from-black/40 via-transparent to-black/60"
       />
 
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
@@ -89,7 +99,7 @@ export default function LiquidMetalHero({
             <motion.div className="flex justify-center" variants={itemVariants}>
               <Badge
                 variant="secondary"
-                className="bg-foreground/10 text-foreground border-foreground/20 hover:bg-foreground/20 transition-colors duration-300 backdrop-blur-sm px-4 py-1.5 text-sm"
+                className="bg-foreground/10 text-foreground border-foreground/20 hover:bg-foreground/20 transition-colors duration-300 backdrop-blur-md px-4 py-1.5 text-sm shadow-lg"
               >
                 {badge}
               </Badge>
@@ -102,14 +112,14 @@ export default function LiquidMetalHero({
             <motion.h1
               role="heading"
               aria-level={1}
-              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-foreground leading-tight tracking-tight drop-shadow-xl"
+              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-foreground leading-tight tracking-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]"
               variants={itemVariants}
             >
               {title}
             </motion.h1>
 
             <motion.p
-              className="max-w-3xl mx-auto text-xl sm:text-2xl text-foreground/90 leading-relaxed font-light"
+              className="max-w-3xl mx-auto text-xl sm:text-2xl text-foreground/90 leading-relaxed font-light drop-shadow-md"
               variants={itemVariants}
             >
               {subtitle}
@@ -117,14 +127,14 @@ export default function LiquidMetalHero({
           </motion.div>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             variants={buttonVariants}
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 onClick={onPrimaryCtaClick}
                 size="lg"
-                className="bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 shadow-2xl text-lg px-8 py-6 font-semibold rounded-xl"
+                className="bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 shadow-2xl text-lg px-8 py-6 font-semibold rounded-xl backdrop-blur-md"
               >
                 {primaryCtaLabel}
               </Button>
@@ -136,7 +146,7 @@ export default function LiquidMetalHero({
                   onClick={onSecondaryCtaClick}
                   variant="outline"
                   size="lg"
-                  className="border-foreground/30 text-foreground hover:bg-foreground/10 hover:border-foreground/50 transition-all duration-300 backdrop-blur-sm text-lg px-8 py-6 font-semibold rounded-xl"
+                  className="border-foreground/30 text-foreground hover:bg-foreground/10 hover:border-foreground/50 transition-all duration-300 backdrop-blur-md text-lg px-8 py-6 font-semibold rounded-xl"
                 >
                   {secondaryCtaLabel}
                 </Button>
@@ -147,13 +157,13 @@ export default function LiquidMetalHero({
           {features.length > 0 && (
             <motion.div className="pt-12" variants={itemVariants}>
               <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
-                <Card className="bg-foreground/10 border-foreground/20 backdrop-blur-md shadow-2xl max-w-4xl mx-auto">
+                <Card className="bg-foreground/10 border-foreground/20 backdrop-blur-xl shadow-2xl max-w-4xl mx-auto">
                   <div className="p-8">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {features.map((feature, index) => (
                         <motion.div
                           key={index}
-                          className="flex items-center justify-center text-center p-3 rounded-lg bg-black/20 border border-white/5"
+                          className="flex items-center justify-center text-center p-3 rounded-xl bg-white/5 border border-white/10"
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{
@@ -161,7 +171,7 @@ export default function LiquidMetalHero({
                             delay: 0.8 + index * 0.1,
                           }}
                         >
-                          <p className="text-foreground/90 font-medium text-base sm:text-lg">
+                          <p className="text-foreground/90 font-medium text-lg">
                             {feature}
                           </p>
                         </motion.div>
