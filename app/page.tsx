@@ -31,36 +31,36 @@ export default function HomePage() {
             "radial-gradient(ellipse 90% 120% at 50% -20%, rgba(56, 189, 248, 0.35), rgba(99, 102, 241, 0.28), transparent 75%)",
         }}
       />
-      {/* 120+ FPS Zero-cost ambient lighting layers with native hardware feathered gradients */}
+      {/* Zero-cost ambient lighting layers that illuminate all sections on scroll */}
       <div
-        className="fixed top-0 left-1/4 w-[600px] sm:w-[750px] h-[500px] sm:h-[650px] rounded-full pointer-events-none -z-10 opacity-70"
+        className="fixed top-0 left-1/4 w-[750px] sm:w-[950px] h-[650px] sm:h-[850px] rounded-full pointer-events-none -z-10 opacity-70"
         style={{
           background:
-            "radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(14, 165, 233, 0.12) 40%, transparent 70%)",
+            "radial-gradient(circle, rgba(99, 102, 241, 0.28) 0%, rgba(14, 165, 233, 0.15) 45%, transparent 75%)",
           transform: "translate3d(0,0,0)",
         }}
       />
       <div
-        className="fixed top-1/3 -left-48 w-[500px] sm:w-[650px] h-[500px] sm:h-[650px] rounded-full pointer-events-none -z-10 opacity-60"
+        className="fixed top-1/4 -left-36 w-[650px] sm:w-[850px] h-[650px] sm:h-[850px] rounded-full pointer-events-none -z-10 opacity-60"
         style={{
           background:
-            "radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, rgba(59, 130, 246, 0.1) 45%, transparent 70%)",
+            "radial-gradient(circle, rgba(168, 85, 247, 0.22) 0%, rgba(59, 130, 246, 0.14) 45%, transparent 75%)",
           transform: "translate3d(0,0,0)",
         }}
       />
       <div
-        className="fixed top-2/3 -right-48 w-[500px] sm:w-[700px] h-[500px] sm:h-[700px] rounded-full pointer-events-none -z-10 opacity-60"
+        className="fixed top-1/2 -right-36 w-[700px] sm:w-[900px] h-[700px] sm:h-[900px] rounded-full pointer-events-none -z-10 opacity-60"
         style={{
           background:
-            "radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(14, 165, 233, 0.12) 40%, transparent 70%)",
+            "radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(14, 165, 233, 0.15) 45%, transparent 75%)",
           transform: "translate3d(0,0,0)",
         }}
       />
       <div
-        className="fixed bottom-0 left-1/3 w-[600px] sm:w-[800px] h-[500px] sm:h-[600px] rounded-full pointer-events-none -z-10 opacity-50"
+        className="fixed bottom-0 left-1/4 w-[800px] sm:w-[1000px] h-[600px] sm:h-[800px] rounded-full pointer-events-none -z-10 opacity-50"
         style={{
           background:
-            "radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.1) 45%, transparent 70%)",
+            "radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, rgba(168, 85, 247, 0.14) 45%, transparent 75%)",
           transform: "translate3d(0,0,0)",
         }}
       />
