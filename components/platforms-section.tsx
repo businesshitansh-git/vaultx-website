@@ -86,7 +86,7 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
             <a href={apkDownloadPath} download="VaultX-Latest.apk" className="block w-full">
               <Button
                 size="lg"
-                className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full h-[48px] flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(16,185,129,0.35)] transition-all group active:scale-98"
+                className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full h-[48px] flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(16,185,129,0.35)] transition-all duration-150 active:scale-95 cursor-pointer select-none touch-manipulation group"
               >
                 <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
                 <span>Download APK</span>
@@ -140,7 +140,7 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
             <Button
               onClick={onOpenIosGuide}
               size="lg"
-              className="w-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold rounded-full h-[48px] flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(6,182,212,0.35)] transition-all group active:scale-98"
+              className="w-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold rounded-full h-[48px] flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(6,182,212,0.35)] transition-all duration-150 active:scale-95 cursor-pointer select-none touch-manipulation group"
             >
               <Info className="w-5 h-5 group-hover:scale-110 transition-transform" />
               <span>View iPhone Steps</span>
@@ -206,7 +206,7 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
             >
               <Button
                 size="lg"
-                className="w-full bg-indigo-500 hover:bg-indigo-400 text-white font-bold rounded-full h-[48px] flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(99,102,241,0.35)] transition-all group active:scale-98"
+                className="w-full bg-indigo-500 hover:bg-indigo-400 text-white font-bold rounded-full h-[48px] flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(99,102,241,0.35)] transition-all duration-150 active:scale-95 cursor-pointer select-none touch-manipulation group"
               >
                 <ExternalLink className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
                 <span>Launch on Windows</span>

@@ -146,6 +146,7 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
                 onClick={onOpenDownload}
                 bandCount={4}
                 zoom={7}
+                idleSpeed={0.8}
               />
               <span className="text-xs text-slate-300 font-medium">
                 Instant setup • No card needed

@@ -77,7 +77,7 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
             onClick={onOpenDownload}
             bandCount={4}
             zoom={7}
-            idleSpeed={0.5}
+            idleSpeed={0.8}
             hoverSpeed={1.2}
           />
         </div>
@@ -130,6 +130,7 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
               }}
               bandCount={4}
               zoom={7}
+              idleSpeed={0.8}
             />
           </div>
         </div>

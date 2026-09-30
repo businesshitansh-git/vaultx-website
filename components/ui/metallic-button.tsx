@@ -11,7 +11,11 @@ import {
 } from "react";
 
 const VERTEX_SHADER = `#version 300 es
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
 
 layout(location = 0) in vec4 a_position;
 
@@ -33,14 +37,14 @@ out vec2 v_responsiveBoxGivenSize;
 
 vec3 getBoxSize(float boxRatio, vec2 givenBoxSize) {
   vec2 box = vec2(0.);
-  box.x = boxRatio * min(givenBoxSize.x / boxRatio, givenBoxSize.y);
+  box.x = boxRatio * min(givenBoxSize.x / max(boxRatio, 0.001), givenBoxSize.y);
   float noFitBoxWidth = box.x;
   if (u_fit == 1.) {
-    box.x = boxRatio * min(u_resolution.x / boxRatio, u_resolution.y);
+    box.x = boxRatio * min(u_resolution.x / max(boxRatio, 0.001), u_resolution.y);
   } else if (u_fit == 2.) {
-    box.x = boxRatio * max(u_resolution.x / boxRatio, u_resolution.y);
+    box.x = boxRatio * max(u_resolution.x / max(boxRatio, 0.001), u_resolution.y);
   }
-  box.y = box.x / boxRatio;
+  box.y = box.x / max(boxRatio, 0.001);
   return vec3(box, noFitBoxWidth);
 }
 
@@ -57,40 +61,44 @@ void main() {
 
   float fixedRatio = 1.;
   vec2 fixedRatioBoxGivenSize = vec2(
-  (u_worldWidth == 0.) ? u_resolution.x : givenBoxSize.x,
-  (u_worldHeight == 0.) ? u_resolution.y : givenBoxSize.y
+    (u_worldWidth == 0.) ? u_resolution.x : givenBoxSize.x,
+    (u_worldHeight == 0.) ? u_resolution.y : givenBoxSize.y
   );
 
-  vec2 objectBoxSize = getBoxSize(fixedRatio, fixedRatioBoxGivenSize).xy;
+  vec2 objectBoxSize = max(getBoxSize(fixedRatio, fixedRatioBoxGivenSize).xy, vec2(1.0));
   vec2 objectWorldScale = u_resolution.xy / objectBoxSize;
 
   v_objectUV = uv;
   v_objectUV *= objectWorldScale;
   v_objectUV += boxOrigin * (objectWorldScale - 1.);
   v_objectUV += graphicOffset;
-  v_objectUV /= u_scale;
+  v_objectUV /= max(u_scale, 0.001);
   v_objectUV = graphicRotation * v_objectUV;
 
   v_responsiveBoxGivenSize = vec2(
-  (u_worldWidth == 0.) ? u_resolution.x : givenBoxSize.x,
-  (u_worldHeight == 0.) ? u_resolution.y : givenBoxSize.y
+    (u_worldWidth == 0.) ? u_resolution.x : givenBoxSize.x,
+    (u_worldHeight == 0.) ? u_resolution.y : givenBoxSize.y
   );
-  float responsiveRatio = v_responsiveBoxGivenSize.x / v_responsiveBoxGivenSize.y;
-  vec2 responsiveBoxSize = getBoxSize(responsiveRatio, v_responsiveBoxGivenSize).xy;
+  float responsiveRatio = v_responsiveBoxGivenSize.x / max(v_responsiveBoxGivenSize.y, 0.001);
+  vec2 responsiveBoxSize = max(getBoxSize(responsiveRatio, v_responsiveBoxGivenSize).xy, vec2(1.0));
   vec2 responsiveBoxScale = u_resolution.xy / responsiveBoxSize;
 
   v_responsiveUV = uv;
   v_responsiveUV *= responsiveBoxScale;
   v_responsiveUV += boxOrigin * (responsiveBoxScale - 1.);
   v_responsiveUV += graphicOffset;
-  v_responsiveUV /= u_scale;
+  v_responsiveUV /= max(u_scale, 0.001);
   v_responsiveUV.x *= responsiveRatio;
   v_responsiveUV = graphicRotation * v_responsiveUV;
-  v_responsiveUV.x /= responsiveRatio;
+  v_responsiveUV.x /= max(responsiveRatio, 0.001);
 }`;
 
 const FRAGMENT_SHADER = `#version 300 es
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
 
 uniform vec2 u_resolution;
 uniform float u_time;
@@ -191,7 +199,7 @@ void main() {
 
   vec2 shapeUV = uv - .5;
   shapeUV *= .67;
-  edge = pow(clamp(3. * length(shapeUV), 0., 1.), 18.);
+  edge = pow(clamp(3. * length(shapeUV), 0.001, 1.), 12.);
 
   edge = mix(smoothstep(.9 - 2. * fwidth(edge), .9, edge), edge, smoothstep(0.0, 0.4, u_contour));
 
@@ -211,9 +219,9 @@ void main() {
   grad_uv = rotate(grad_uv, (.25 - .2 * diagBLtoTR) * PI);
   float direction = grad_uv.x;
 
-  float bump = pow(1.8 * dist, 1.2);
+  float bump = pow(clamp(1.8 * dist, 0.0, 2.0), 1.2);
   bump = 1. - bump;
-  bump *= pow(uv.y, .3);
+  bump *= pow(clamp(uv.y, 0.001, 1.0), .3);
 
   float thin_strip_1_ratio = .12 / cycleWidth * (1. - .4 * bump);
   float thin_strip_2_ratio = .07 / cycleWidth * (1. + .4 * bump);
@@ -233,14 +241,14 @@ void main() {
   direction -= 1.7 * edge * smoothstep(.5, 1., u_contour);
   direction += .2 * pow(u_contour, 4.) * (1.0 - smoothstep(0., 1., edge));
 
-  bump *= clamp(pow(uv.y, .1), .3, 1.);
+  bump *= clamp(pow(clamp(uv.y, 0.001, 1.0), .1), .3, 1.);
   direction *= (.1 + (1.1 - edge) * bump);
 
   direction *= (.4 + .6 * (1.0 - smoothstep(.5, 1., edge)));
   direction += .18 * (smoothstep(.1, .2, uv.y) * (1.0 - smoothstep(.2, .4, uv.y)));
   direction += .03 * (smoothstep(.1, .2, 1. - uv.y) * (1.0 - smoothstep(.2, .4, 1. - uv.y)));
 
-  direction *= (.5 + .5 * pow(uv.y, 2.));
+  direction *= (.5 + .5 * pow(clamp(uv.y, 0.0, 1.0), 2.));
   direction *= cycleWidth;
   direction -= t;
 
@@ -277,7 +285,8 @@ void main() {
   color = color + bgColor * (1. - opacity);
   opacity = opacity + u_colorBack.a * (1. - opacity);
 
-  color += 1. / 256. * (fract(sin(dot(.014 * gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453123) - .5);
+  float dither = fract(sin(mod(dot(gl_FragCoord.xy, vec2(12.9898, 78.233)), 3.14159)) * 4375.85453);
+  color += (dither - 0.5) / 255.0;
 
   fragColor = vec4(color, opacity);
 }`;
@@ -361,14 +370,28 @@ class MetallicShaderMount {
     this.parent = parent;
     this.uniforms = uniforms;
     this.speed = speed;
+    this.lastRenderTime = performance.now();
 
     this.canvas = document.createElement("canvas");
+    this.canvas.setAttribute("aria-hidden", "true");
     parent.prepend(this.canvas);
+
+    this.canvas.addEventListener("webglcontextlost", (e) => {
+      e.preventDefault();
+      if (this.rafId !== null) cancelAnimationFrame(this.rafId);
+      this.rafId = null;
+    });
+
+    this.canvas.addEventListener("webglcontextrestored", () => {
+      this.handleResize();
+      if (this.speed !== 0) this.requestRender();
+    });
 
     const gl = this.canvas.getContext("webgl2", {
       antialias: true,
       premultipliedAlpha: true,
       alpha: true,
+      powerPreference: "high-performance",
     });
     if (!gl) return;
 
@@ -463,12 +486,12 @@ class MetallicShaderMount {
     const gl = this.gl;
     if (!gl || this.disposed) return;
 
-    const width = this.parent.clientWidth;
-    const height = this.parent.clientHeight;
-    if (width === 0 || height === 0) return;
+    const width = this.parent.clientWidth || this.parent.offsetWidth || 142;
+    const height = this.parent.clientHeight || this.parent.offsetHeight || 46;
+    if (width <= 0 || height <= 0) return;
 
-    const dpr = Math.max(1, window.devicePixelRatio);
-    const targetRenderScale = Math.max(dpr, DEFAULT_MIN_PIXEL_RATIO);
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    const targetRenderScale = Math.min(Math.max(dpr, DEFAULT_MIN_PIXEL_RATIO), 3);
     let targetPixelWidth = Math.round(width) * targetRenderScale;
     let targetPixelHeight = Math.round(height) * targetRenderScale;
 
@@ -476,8 +499,8 @@ class MetallicShaderMount {
       Math.sqrt(DEFAULT_MAX_PIXEL_COUNT) /
       Math.sqrt(targetPixelWidth * targetPixelHeight);
     const clamp = Math.min(1, headroom);
-    const newWidth = Math.round(targetPixelWidth * clamp);
-    const newHeight = Math.round(targetPixelHeight * clamp);
+    const newWidth = Math.max(1, Math.round(targetPixelWidth * clamp));
+    const newHeight = Math.max(1, Math.round(targetPixelHeight * clamp));
 
     if (this.canvas.width === newWidth && this.canvas.height === newHeight) {
       return;
@@ -485,7 +508,7 @@ class MetallicShaderMount {
 
     this.canvas.width = newWidth;
     this.canvas.height = newHeight;
-    this.renderScale = newWidth / Math.round(width);
+    this.renderScale = newWidth / Math.max(1, Math.round(width));
     this.resolutionChanged = true;
     gl.viewport(0, 0, newWidth, newHeight);
     this.renderFrame(performance.now());
@@ -521,7 +544,8 @@ class MetallicShaderMount {
     const gl = this.gl;
     if (!gl || !this.program || this.disposed) return;
 
-    const dt = currentTime - this.lastRenderTime;
+    const rawDt = currentTime - this.lastRenderTime;
+    const dt = Math.min(Math.max(rawDt, 0), 100);
     this.lastRenderTime = currentTime;
     if (this.speed !== 0 && this.isInViewport) {
       this.currentFrame += dt * this.speed;
@@ -746,6 +770,9 @@ export function MetallicButton({
       const style = document.createElement("style");
       style.id = styleId;
       style.textContent = `
+        .metallic-button-canvas {
+          background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.4) 100%);
+        }
         .metallic-button-canvas canvas {
           width: 100% !important;
           height: 100% !important;
@@ -753,12 +780,13 @@ export function MetallicButton({
           position: absolute !important;
           top: 0 !important;
           left: 0 !important;
-          border-radius: 100px !important;
+          border-radius: 9999px !important;
+          pointer-events: none;
         }
         @keyframes metallic-button-ripple {
           0% {
             transform: translate(-50%, -50%) scale(0);
-            opacity: 0.6;
+            opacity: 0.7;
           }
           100% {
             transform: translate(-50%, -50%) scale(4);
@@ -774,7 +802,7 @@ export function MetallicButton({
     mount.current = new MetallicShaderMount(
       surfaceRef.current,
       uniformsRef.current,
-      reducedMotionRef.current ? 0 : idleSpeedRef.current,
+      reducedMotionRef.current ? idleSpeedRef.current * 0.3 : idleSpeedRef.current,
     );
 
     return () => {
@@ -789,7 +817,7 @@ export function MetallicButton({
 
   useEffect(() => {
     if (reducedMotion) {
-      mount.current?.setSpeed(0);
+      mount.current?.setSpeed(idleSpeed * 0.3);
       return;
     }
     if (!isHoveredRef.current) mount.current?.setSpeed(idleSpeed);
@@ -798,25 +826,58 @@ export function MetallicButton({
   const handleMouseEnter = () => {
     setIsHovered(true);
     isHoveredRef.current = true;
-    if (!reducedMotion) mount.current?.setSpeed(hoverSpeed);
+    mount.current?.setSpeed(hoverSpeed);
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
     isHoveredRef.current = false;
     setIsPressed(false);
-    if (!reducedMotion) mount.current?.setSpeed(idleSpeed);
+    mount.current?.setSpeed(reducedMotion ? idleSpeed * 0.3 : idleSpeed);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLButtonElement>) => {
+    setIsPressed(true);
+    mount.current?.setSpeed(clickSpeed);
+
+    if (buttonRef.current && e.touches && e.touches[0]) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      const touch = e.touches[0];
+      const ripple = {
+        x: touch.clientX - rect.left,
+        y: touch.clientY - rect.top,
+        id: rippleId.current++,
+      };
+      setRipples((prev) => [...prev, ripple]);
+      setTimeout(() => {
+        setRipples((prev) => prev.filter((r) => r.id !== ripple.id));
+      }, 600);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsPressed(false);
+    setTimeout(() => {
+      mount.current?.setSpeed(reducedMotion ? idleSpeed * 0.3 : idleSpeed);
+    }, 350);
+  };
+
+  const handleTouchCancel = () => {
+    setIsPressed(false);
+    mount.current?.setSpeed(reducedMotion ? idleSpeed * 0.3 : idleSpeed);
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (mount.current && !reducedMotion) {
-      mount.current.setSpeed(clickSpeed);
-      setTimeout(() => {
-        mount.current?.setSpeed(isHoveredRef.current ? hoverSpeed : idleSpeed);
-      }, 300);
-    }
+    mount.current?.setSpeed(clickSpeed);
+    setTimeout(() => {
+      mount.current?.setSpeed(
+        isHoveredRef.current
+          ? hoverSpeed
+          : (reducedMotion ? idleSpeed * 0.3 : idleSpeed)
+      );
+    }, 300);
 
-    if (buttonRef.current && !reducedMotion) {
+    if (buttonRef.current && e.clientX && e.clientY) {
       const rect = buttonRef.current.getBoundingClientRect();
       const ripple = {
         x: e.clientX - rect.left,
@@ -835,8 +896,9 @@ export function MetallicButton({
 
   return (
     <div className={`relative inline-block flex-shrink-0 ${shellSize} ${className}`}>
-      <div className="perspective-origin-[50%_50%] perspective-[1000px]">
+      <div className="perspective-origin-[50%_50%] perspective-[1000px] w-full h-full">
         <div className={`relative transform-3d ${shellSize}`}>
+          {/* Label Layer */}
           <div
             className={`pointer-events-none absolute inset-0 z-30 flex translate-z-5 items-center justify-center gap-1.5 transform-3d px-4`}
           >
@@ -853,19 +915,25 @@ export function MetallicButton({
             )}
           </div>
 
+          {/* Inner Face Layer with Translucent Graphite and Specular Edge */}
           <div
-            className={`absolute inset-0 z-20 translate-z-2.5 transform-3d ${pressShift} ${SETTLE} p-0.5`}
+            className={`absolute inset-0 z-20 translate-z-2.5 transform-3d ${pressShift} ${SETTLE} p-[2.5px]`}
           >
             <div
-              className={`w-full h-full rounded-full bg-[linear-gradient(180deg,#28282e_0%,#131316_100%)] border border-white/10 ${SHADOW_SHIFT} ${isPressed ? FACE_PRESSED : "shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)]"}`}
+              className={`w-full h-full rounded-full bg-[linear-gradient(180deg,rgba(36,36,44,0.85)_0%,rgba(14,14,18,0.92)_100%)] backdrop-blur-[1px] border border-white/15 ${SHADOW_SHIFT} ${
+                isPressed
+                  ? FACE_PRESSED
+                  : "shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)]"
+              }`}
             />
           </div>
 
+          {/* Base Rim Layer with WebGL Metallic Fluid Simulation */}
           <div
             className={`absolute inset-0 z-10 translate-z-0 transform-3d ${pressShift} ${SETTLE}`}
           >
             <div
-              className={`rounded-full bg-slate-900/80 border border-white/25 w-full h-full ${SHADOW_SHIFT} ${
+              className={`rounded-full bg-slate-950 border border-white/30 w-full h-full ${SHADOW_SHIFT} ${
                 isPressed
                   ? RIM_PRESSED
                   : isHovered
@@ -880,6 +948,7 @@ export function MetallicButton({
             </div>
           </div>
 
+          {/* Transparent Interactive Touch & Click Overlay */}
           <button
             ref={buttonRef}
             type="button"
@@ -888,13 +957,17 @@ export function MetallicButton({
             onMouseLeave={handleMouseLeave}
             onMouseDown={() => setIsPressed(true)}
             onMouseUp={() => setIsPressed(false)}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchCancel}
             aria-label={label}
-            className={`absolute inset-0 z-40 translate-z-6.25 cursor-pointer overflow-hidden rounded-full border-none bg-transparent outline-none transform-3d w-full h-full`}
+            style={{ touchAction: "manipulation" }}
+            className={`absolute inset-0 z-40 translate-z-6.25 cursor-pointer overflow-hidden rounded-full border-none bg-transparent outline-none transform-3d w-full h-full select-none`}
           >
             {ripples.map((ripple) => (
               <span
                 key={ripple.id}
-                className="pointer-events-none absolute size-5 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_70%)] animate-[metallic-button-ripple_0.6s_ease-out]"
+                className="pointer-events-none absolute size-5 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.5)_0%,rgba(255,255,255,0)_70%)] animate-[metallic-button-ripple_0.6s_ease-out]"
                 style={{
                   left: `${ripple.x}px`,
                   top: `${ripple.y}px`,

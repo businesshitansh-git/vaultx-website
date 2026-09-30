@@ -92,7 +92,7 @@ export default function DownloadDialog({
             <div className="grid grid-cols-3 gap-1 sm:gap-2 p-1 sm:p-1.5 bg-white/[0.04] rounded-2xl border border-white/10 mb-5 sm:mb-6">
               <button
                 onClick={() => setPlatform("android")}
-                className={`flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-2 rounded-xl font-medium text-xs sm:text-sm transition-all duration-200 ${
+                className={`flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-2 rounded-xl font-medium text-xs sm:text-sm transition-all duration-200 active:scale-95 touch-manipulation cursor-pointer select-none ${
                   platform === "android"
                     ? "bg-gradient-to-r from-emerald-500/20 to-teal-500/20 text-emerald-300 border border-emerald-500/30 shadow-lg"
                     : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
@@ -104,25 +104,25 @@ export default function DownloadDialog({
 
               <button
                 onClick={() => setPlatform("ios")}
-                className={`flex items-center justify-center gap-2 py-3 px-3 rounded-xl font-medium text-sm transition-all duration-200 ${
+                className={`flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-2 rounded-xl font-medium text-xs sm:text-sm transition-all duration-200 active:scale-95 touch-manipulation cursor-pointer select-none ${
                   platform === "ios"
                     ? "bg-gradient-to-r from-blue-500/20 to-indigo-500/20 text-cyan-300 border border-cyan-500/30 shadow-lg"
                     : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
                 }`}
               >
-                <Apple className="w-4 h-4" />
+                <Apple className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 <span>iPhone</span>
               </button>
 
               <button
                 onClick={() => setPlatform("windows")}
-                className={`flex items-center justify-center gap-2 py-3 px-3 rounded-xl font-medium text-sm transition-all duration-200 ${
+                className={`flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-2 rounded-xl font-medium text-xs sm:text-sm transition-all duration-200 active:scale-95 touch-manipulation cursor-pointer select-none ${
                   platform === "windows"
                     ? "bg-gradient-to-r from-indigo-500/20 to-purple-500/20 text-indigo-300 border border-indigo-500/30 shadow-lg"
                     : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
                 }`}
               >
-                <Monitor className="w-4 h-4" />
+                <Monitor className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 <span>Windows</span>
               </button>
             </div>

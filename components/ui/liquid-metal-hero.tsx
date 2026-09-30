@@ -59,7 +59,7 @@ export default function LiquidMetalHero({
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-24">
       {/* 90+ FPS Ultra-Optimized 3D Liquid Metal Sphere */}
       {mounted && (
-        <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
           {/* Upper Liquid Glass Refraction Glow */}
           <div
             className="w-[340px] sm:w-[850px] h-[260px] sm:h-[450px] -top-16 sm:-top-28 absolute rounded-full pointer-events-none"
@@ -86,7 +86,6 @@ export default function LiquidMetalHero({
                 "radial-gradient(circle at center, black 58%, transparent 70%)",
               maskImage:
                 "radial-gradient(circle at center, black 58%, transparent 70%)",
-              transform: "translateZ(0)",
             }}
           >
             <LiquidMetal
@@ -155,7 +154,7 @@ export default function LiquidMetalHero({
             <Button
               onClick={onPrimaryCtaClick}
               size="lg"
-              className="w-full sm:w-auto bg-[#ebebef] hover:bg-white text-slate-950 hover:text-black font-semibold rounded-full px-8 h-[46px] shadow-[0_4px_20px_rgba(255,255,255,0.15)] transition-all duration-200 active:scale-95 text-sm sm:text-base border border-white/40 flex items-center justify-center"
+              className="w-full sm:w-auto bg-[#ebebef] hover:bg-white text-slate-950 hover:text-black font-semibold rounded-full px-8 h-[46px] shadow-[0_4px_20px_rgba(255,255,255,0.15)] transition-all duration-200 active:scale-95 text-sm sm:text-base border border-white/40 flex items-center justify-center cursor-pointer select-none touch-manipulation"
             >
               {primaryCtaLabel}
             </Button>
@@ -169,7 +168,7 @@ export default function LiquidMetalHero({
                   bandCount={4}
                   zoom={7}
                   widthClass="w-48"
-                  idleSpeed={0.6}
+                  idleSpeed={0.8}
                 />
               </div>
             )}

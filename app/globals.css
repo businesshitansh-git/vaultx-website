@@ -99,24 +99,24 @@
   width: 42px !important;
 }
 .transform-3d {
-  transform-style: preserve-3d !important;
+  transform-style: preserve-3d;
 }
 .translate-z-0 {
-  transform: translateZ(0px) !important;
+  transform: translate3d(0, 0, 0px);
 }
 .translate-z-2\.5 {
-  transform: translateZ(2.5px) !important;
+  transform: translate3d(0, 0, 2.5px);
 }
 .translate-z-5 {
-  transform: translateZ(5px) !important;
+  transform: translate3d(0, 0, 5px);
 }
 .translate-z-6\.25 {
-  transform: translateZ(6.25px) !important;
+  transform: translate3d(0, 0, 6.25px);
 }
 .perspective-\[1000px\] {
-  perspective: 1000px !important;
+  perspective: 1000px;
 }
 .perspective-origin-\[50\%_50\%\] {
-  perspective-origin: 50% 50% !important;
+  perspective-origin: 50% 50%;
 }
 
