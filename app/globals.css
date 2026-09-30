@@ -76,3 +76,45 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #333333;
 }
+
+/* 21st.dev Metallic Button 3D & Sizing Support */
+.h-11\.5 {
+  height: 46px !important;
+}
+.w-35\.5 {
+  width: 142px !important;
+}
+.h-10\.5 {
+  height: 42px !important;
+}
+.w-34\.5 {
+  width: 138px !important;
+}
+.w-11\.5 {
+  width: 46px !important;
+}
+.w-10\.5 {
+  width: 42px !important;
+}
+.transform-3d {
+  transform-style: preserve-3d !important;
+}
+.translate-z-0 {
+  transform: translateZ(0px) !important;
+}
+.translate-z-2\.5 {
+  transform: translateZ(2.5px) !important;
+}
+.translate-z-5 {
+  transform: translateZ(5px) !important;
+}
+.translate-z-6\.25 {
+  transform: translateZ(6.25px) !important;
+}
+.perspective-\[1000px\] {
+  perspective: 1000px !important;
+}
+.perspective-origin-\[50\%_50\%\] {
+  perspective-origin: 50% 50% !important;
+}
+

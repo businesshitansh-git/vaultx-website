@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { MetallicButton } from "@/components/ui/metallic-button";
 
 interface FeaturesSectionProps {
   onOpenDownload: () => void;
@@ -139,14 +140,16 @@ export default function FeaturesSection({ onOpenDownload }: FeaturesSectionProps
             <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
               VaultX replaces clunky legacy password utilities with an ultra-fluid, liquid-metal interface. Experience effortless security designed by Hitansh Andraskar that respects your privacy from day one.
             </p>
-            <div className="pt-2">
-              <button
+            <div className="pt-4 flex flex-col sm:flex-row sm:items-center gap-4">
+              <MetallicButton
+                label="Get VaultX"
                 onClick={onOpenDownload}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors group"
-              >
-                <span>Download or launch now on your device</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+                bandCount={4}
+                zoom={7}
+              />
+              <span className="text-xs text-slate-300 font-medium">
+                Instant setup • No card needed
+              </span>
             </div>
           </div>
 

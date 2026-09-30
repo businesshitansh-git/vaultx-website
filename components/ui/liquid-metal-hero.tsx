@@ -5,6 +5,7 @@ import { LiquidMetal } from "@paper-design/shaders-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { MetallicButton } from "@/components/ui/metallic-button";
 import { motion } from "framer-motion";
 
 interface LiquidMetalHeroProps {
@@ -59,6 +60,15 @@ export default function LiquidMetalHero({
       {/* 90+ FPS Ultra-Optimized 3D Liquid Metal Sphere */}
       {mounted && (
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
+          {/* Upper Liquid Glass Refraction Glow */}
+          <div
+            className="w-[850px] h-[450px] -top-28 absolute rounded-full pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 35%, rgba(56, 189, 248, 0.3) 0%, rgba(99, 102, 241, 0.25) 40%, transparent 70%)",
+            }}
+          />
+
           {/* Zero-cost radial gradient ambient aura */}
           <div
             className="w-[500px] h-[500px] sm:w-[620px] sm:h-[620px] absolute rounded-full pointer-events-none"
@@ -127,7 +137,7 @@ export default function LiquidMetalHero({
             <h1
               role="heading"
               aria-level={1}
-              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-tight tracking-tight drop-shadow-[0_4px_25px_rgba(0,0,0,0.95)]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight drop-shadow-[0_4px_25px_rgba(0,0,0,0.95)] max-w-5xl mx-auto break-words"
             >
               {title}
             </h1>
@@ -138,47 +148,47 @@ export default function LiquidMetalHero({
           </motion.div>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2"
+            className="flex flex-col sm:flex-row gap-5 justify-center items-center pt-2"
             variants={itemVariants}
           >
+            {/* Primary Download VaultX Button: Stadium pill shape (rounded left & right circle, rectangular form), matte satin white, matching 46px height */}
             <Button
               onClick={onPrimaryCtaClick}
               size="lg"
-              className="bg-white text-black hover:bg-slate-100 transition-all duration-200 shadow-[0_0_25px_rgba(255,255,255,0.25)] text-base sm:text-lg px-8 py-6 font-bold rounded-2xl active:scale-95"
+              className="bg-[#ebebef] hover:bg-white text-slate-950 hover:text-black font-semibold rounded-full px-8 h-[46px] shadow-[0_4px_20px_rgba(255,255,255,0.15)] transition-all duration-200 active:scale-95 text-sm sm:text-base border border-white/40 flex items-center justify-center"
             >
               {primaryCtaLabel}
             </Button>
 
+            {/* Secondary CTA: Replaced with WebGL Metallic Button */}
             {secondaryCtaLabel && onSecondaryCtaClick && (
-              <Button
+              <MetallicButton
+                label={secondaryCtaLabel}
                 onClick={onSecondaryCtaClick}
-                variant="outline"
-                size="lg"
-                className="border-white/30 text-white hover:bg-white/10 hover:border-white/50 transition-all duration-200 backdrop-blur-sm text-base sm:text-lg px-8 py-6 font-semibold rounded-2xl bg-black/50 shadow-md active:scale-95"
-              >
-                {secondaryCtaLabel}
-              </Button>
+                bandCount={4}
+                zoom={7}
+                widthClass="w-48"
+                idleSpeed={0.6}
+              />
             )}
           </motion.div>
 
           {features.length > 0 && (
             <motion.div className="pt-10 sm:pt-14" variants={itemVariants}>
-              <Card className="bg-black/60 border-white/15 backdrop-blur-md shadow-xl max-w-4xl mx-auto rounded-2xl overflow-hidden">
-                <div className="p-6 sm:p-8">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {features.map((feature, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center justify-center text-center p-2 rounded-xl"
-                      >
-                        <p className="text-white font-medium text-base sm:text-lg tracking-wide">
-                          {feature}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+              <div className="max-w-4xl mx-auto rounded-2xl sm:rounded-full bg-black/40 border border-white/20 backdrop-blur-md shadow-2xl py-4 sm:py-5 px-6 sm:px-10">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+                  {features.map((feature, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center justify-center text-center py-1 sm:px-4"
+                    >
+                      <span className="text-white font-semibold text-sm sm:text-base tracking-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              </Card>
+              </div>
             </motion.div>
           )}
         </motion.div>

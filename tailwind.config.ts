@@ -49,6 +49,12 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      spacing: {
+        "10.5": "2.625rem",
+        "11.5": "2.875rem",
+        "34.5": "8.625rem",
+        "35.5": "8.875rem",
+      },
     },
   },
   plugins: [],

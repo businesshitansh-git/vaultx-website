@@ -10,9 +10,9 @@ export default function SiteFooter() {
   };
 
   return (
-    <footer className="relative border-t border-white/10 bg-slate-950/90 pt-16 pb-12 overflow-hidden">
+    <footer className="relative border-t border-white/15 bg-black/40 backdrop-blur-md pt-16 pb-12 overflow-hidden">
       {/* Ambient background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-gradient-to-t from-indigo-500/10 to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-gradient-to-t from-indigo-500/20 via-cyan-500/10 to-transparent blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
@@ -101,8 +101,8 @@ export default function SiteFooter() {
           </p>
 
           {/* Prominent Hitansh credit as requested */}
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 shadow-inner">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+          <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-black/50 border border-white/20 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+            <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
             <span className="text-xs sm:text-sm font-medium text-slate-200">
               Designed &amp; developed by{" "}
               <strong className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 font-bold">

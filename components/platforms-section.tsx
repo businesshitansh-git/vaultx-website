@@ -83,12 +83,12 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
           </div>
 
           <div className="pt-8 relative z-10">
-            <a href={apkDownloadPath} download="VaultX-Latest.apk" className="block">
+            <a href={apkDownloadPath} download="VaultX-Latest.apk" className="block w-full">
               <Button
                 size="lg"
-                className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-xl py-6 flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full h-[48px] flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(16,185,129,0.35)] transition-all group active:scale-98"
               >
-                <Download className="w-5 h-5" />
+                <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
                 <span>Download APK</span>
               </Button>
             </a>
@@ -140,9 +140,9 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
             <Button
               onClick={onOpenIosGuide}
               size="lg"
-              className="w-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold rounded-xl py-6 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20"
+              className="w-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold rounded-full h-[48px] flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(6,182,212,0.35)] transition-all group active:scale-98"
             >
-              <Info className="w-5 h-5" />
+              <Info className="w-5 h-5 group-hover:scale-110 transition-transform" />
               <span>View iPhone Steps</span>
             </Button>
             <a
@@ -202,13 +202,13 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
               href={websiteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="block"
+              className="block w-full"
             >
               <Button
                 size="lg"
-                className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-bold rounded-xl py-6 flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/25"
+                className="w-full bg-indigo-500 hover:bg-indigo-400 text-white font-bold rounded-full h-[48px] flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(99,102,241,0.35)] transition-all group active:scale-98"
               >
-                <ExternalLink className="w-5 h-5" />
+                <ExternalLink className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
                 <span>Launch on Windows</span>
               </Button>
             </a>

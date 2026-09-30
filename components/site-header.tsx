@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import VaultXLogo from "@/components/vaultx-logo";
-import { Button } from "@/components/ui/button";
-import { Download, ExternalLink, Menu, X } from "lucide-react";
+import { MetallicButton } from "@/components/ui/metallic-button";
+import { ExternalLink, Menu, X } from "lucide-react";
 
 interface SiteHeaderProps {
   onOpenDownload: () => void;
@@ -22,22 +22,31 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-3 sm:py-4 px-4 sm:px-8">
-      {/* Frosted Glass Navigation Bar matching reference style */}
+    <header className="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-3 sm:py-4 px-3 sm:px-6 lg:px-8">
+      {/* Translucent Liquid Glass Navigation Bar */}
       <div
-        className={`max-w-7xl mx-auto px-6 py-3 rounded-2xl transition-all duration-300 flex items-center justify-between ${
+        className={`max-w-7xl mx-auto px-5 sm:px-6 py-2.5 rounded-2xl transition-all duration-300 flex items-center justify-between relative overflow-hidden backdrop-blur-2xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] ${
           scrolled
-            ? "bg-black/60 border border-white/15 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
-            : "bg-black/35 border border-white/10 backdrop-blur-md shadow-lg"
+            ? "bg-white/[0.08] border-white/25 shadow-2xl"
+            : "bg-white/[0.04] border-white/15"
         }`}
+        style={{
+          background: scrolled
+            ? "linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)"
+            : "linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)",
+        }}
       >
+        {/* Specular Liquid Glass Top Sheen Reflection */}
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.05] to-transparent pointer-events-none" />
+
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3">
-          <VaultXLogo size={38} showText={true} />
+        <a href="#" className="flex items-center gap-3 relative z-10 flex-shrink-0">
+          <VaultXLogo size={36} showText={true} />
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8 relative z-10">
           <a
             href="#features"
             className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
@@ -61,15 +70,16 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
           </a>
         </nav>
 
-        {/* Action Button */}
-        <div className="hidden md:flex items-center gap-3">
-          <Button
+        {/* WebGL Metallic Button */}
+        <div className="hidden md:flex items-center relative z-10 flex-shrink-0 pl-2">
+          <MetallicButton
+            label="Get VaultX"
             onClick={onOpenDownload}
-            className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl px-5 py-2 font-medium backdrop-blur-sm shadow-md flex items-center gap-2 group transition-all"
-          >
-            <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
-            <span>Get VaultX</span>
-          </Button>
+            bandCount={4}
+            zoom={7}
+            idleSpeed={0.5}
+            hoverSpeed={1.2}
+          />
         </div>
 
         {/* Mobile menu trigger */}
@@ -111,16 +121,15 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
             </a>
           </nav>
 
-          <Button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onOpenDownload();
-            }}
-            className="w-full bg-white text-black font-semibold py-3 rounded-xl flex items-center justify-center gap-2"
-          >
-            <Download className="w-4 h-4" />
-            <span>Download App</span>
-          </Button>
+          <div className="pt-2 flex justify-center">
+            <MetallicButton
+              label="Get VaultX"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenDownload();
+              }}
+            />
+          </div>
         </div>
       )}
     </header>

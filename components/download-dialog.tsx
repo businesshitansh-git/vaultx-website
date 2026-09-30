@@ -56,7 +56,7 @@ export default function DownloadDialog({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ type: "spring", duration: 0.5, bounce: 0.15 }}
-          className="relative w-full max-w-2xl rounded-3xl bg-slate-950/95 border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden z-10 my-auto"
+          className="relative w-full max-w-2xl rounded-3xl bg-black/85 border border-white/20 backdrop-blur-2xl shadow-[0_0_60px_rgba(0,0,0,0.9)] overflow-hidden z-10 my-auto"
         >
           {/* Header subtle glow */}
           <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-indigo-500/15 via-cyan-500/10 to-transparent pointer-events-none" />
@@ -89,7 +89,7 @@ export default function DownloadDialog({
             </div>
 
             {/* Platform Selector Tabs */}
-            <div className="grid grid-cols-3 gap-2 p-1.5 bg-slate-900/90 rounded-2xl border border-white/5 mb-6">
+            <div className="grid grid-cols-3 gap-2 p-1.5 bg-white/[0.04] rounded-2xl border border-white/10 mb-6">
               <button
                 onClick={() => setPlatform("android")}
                 className={`flex items-center justify-center gap-2 py-3 px-3 rounded-xl font-medium text-sm transition-all duration-200 ${
@@ -251,7 +251,7 @@ export default function DownloadDialog({
                       How to Install on iPhone (Safari):
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-                      <div className="p-3 rounded-xl bg-slate-900/60 border border-white/5 text-center flex flex-col items-center">
+                      <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 text-center flex flex-col items-center">
                         <div className="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-2">
                           <ExternalLink className="w-5 h-5" />
                         </div>
@@ -263,7 +263,7 @@ export default function DownloadDialog({
                         </p>
                       </div>
 
-                      <div className="p-3 rounded-xl bg-slate-900/60 border border-white/5 text-center flex flex-col items-center">
+                      <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 text-center flex flex-col items-center">
                         <div className="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-2">
                           <Share className="w-5 h-5" />
                         </div>
@@ -275,7 +275,7 @@ export default function DownloadDialog({
                         </p>
                       </div>
 
-                      <div className="p-3 rounded-xl bg-slate-900/60 border border-white/5 text-center flex flex-col items-center">
+                      <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 text-center flex flex-col items-center">
                         <div className="w-9 h-9 rounded-lg bg-violet-500/10 text-violet-400 flex items-center justify-center mb-2">
                           <PlusSquare className="w-5 h-5" />
                         </div>

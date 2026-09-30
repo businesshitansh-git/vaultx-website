@@ -23,19 +23,41 @@ export default function HomePage() {
 
   return (
     <main className="relative min-h-screen bg-black text-white selection:bg-white/20 selection:text-white overflow-hidden">
-      {/* Zero-cost radial gradient ambient lighting - 90+ FPS optimized */}
+      {/* Top Header Liquid Glass Refraction Backlight */}
       <div
-        className="fixed top-1/4 -left-32 w-[450px] h-[450px] rounded-full pointer-events-none -z-10"
+        className="fixed top-0 inset-x-0 h-44 pointer-events-none -z-10"
         style={{
           background:
-            "radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, transparent 70%)",
+            "radial-gradient(ellipse 90% 120% at 50% -20%, rgba(56, 189, 248, 0.35), rgba(99, 102, 241, 0.28), transparent 75%)",
+        }}
+      />
+      {/* 90+ FPS Zero-cost ambient lighting layers to eliminate black spots and voids */}
+      <div
+        className="fixed top-0 left-1/4 w-[750px] h-[650px] rounded-full pointer-events-none -z-10 opacity-70 blur-[100px]"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, rgba(14, 165, 233, 0.15) 45%, transparent 70%)",
         }}
       />
       <div
-        className="fixed top-2/3 -right-32 w-[450px] h-[450px] rounded-full pointer-events-none -z-10"
+        className="fixed top-1/3 -left-48 w-[650px] h-[650px] rounded-full pointer-events-none -z-10 opacity-60 blur-[110px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, rgba(59, 130, 246, 0.12) 50%, transparent 70%)",
+        }}
+      />
+      <div
+        className="fixed top-2/3 -right-48 w-[700px] h-[700px] rounded-full pointer-events-none -z-10 opacity-60 blur-[110px]"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, rgba(14, 165, 233, 0.15) 45%, transparent 70%)",
+        }}
+      />
+      <div
+        className="fixed bottom-0 left-1/3 w-[800px] h-[600px] rounded-full pointer-events-none -z-10 opacity-50 blur-[120px]"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, rgba(168, 85, 247, 0.12) 50%, transparent 70%)",
         }}
       />
 
