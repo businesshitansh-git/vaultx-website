@@ -30,7 +30,7 @@ export default function LiquidMetalHero({
 }: LiquidMetalHeroProps) {
   const [mounted, setMounted] = useState(false);
 
-  // Throttled mouse parallax for lag-free buttery smooth 60fps tracking
+  // Throttled mouse parallax for lag-free 60fps tracking
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, { stiffness: 45, damping: 25 });
@@ -91,11 +91,34 @@ export default function LiquidMetalHero({
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-24">
-      {/* Persistent 3D Liquid Metal Sphere - Stays visible as you scroll down */}
+      {/* Persistent 3D Liquid Metal Sphere - Feathered Circular Edge to eliminate square boundaries */}
       {mounted && (
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
+          {/* Ambient soft glow aura directly behind the orb */}
           <motion.div
             style={{ x: orbTranslateX, y: orbTranslateY }}
+            animate={{
+              scale: [1, 1.05, 1],
+            }}
+            transition={{
+              scale: { repeat: Infinity, duration: 6, ease: "easeInOut" },
+            }}
+            className="w-[450px] h-[450px] sm:w-[560px] sm:h-[560px] lg:w-[640px] lg:h-[640px] absolute flex items-center justify-center pointer-events-none"
+          >
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500/20 via-indigo-500/25 to-violet-500/20 blur-3xl pointer-events-none opacity-90 scale-110" />
+            <div className="absolute -inset-10 rounded-full bg-indigo-600/15 blur-[120px] pointer-events-none scale-135" />
+          </motion.div>
+
+          {/* Masked liquid metal canvas: circular feathered transition completely blending square box into background */}
+          <motion.div
+            style={{
+              x: orbTranslateX,
+              y: orbTranslateY,
+              WebkitMaskImage:
+                "radial-gradient(circle at center, black 58%, transparent 70%)",
+              maskImage:
+                "radial-gradient(circle at center, black 58%, transparent 70%)",
+            }}
             animate={{
               y: [-10, 10, -10],
               scale: [1, 1.02, 1],
@@ -104,12 +127,8 @@ export default function LiquidMetalHero({
               y: { repeat: Infinity, duration: 6, ease: "easeInOut" },
               scale: { repeat: Infinity, duration: 8, ease: "easeInOut" },
             }}
-            className="w-[450px] h-[450px] sm:w-[560px] sm:h-[560px] lg:w-[640px] lg:h-[640px] relative flex items-center justify-center will-change-transform"
+            className="w-[450px] h-[450px] sm:w-[560px] sm:h-[560px] lg:w-[640px] lg:h-[640px] relative flex items-center justify-center will-change-transform rounded-full overflow-hidden"
           >
-            {/* Ambient soft glow aura behind and around the sphere to eliminate harsh blackness */}
-            <div className="absolute -inset-8 rounded-full bg-gradient-to-tr from-cyan-500/25 via-indigo-500/20 to-violet-500/25 blur-3xl pointer-events-none opacity-80" />
-            <div className="absolute -inset-16 rounded-full bg-indigo-600/10 blur-[100px] pointer-events-none" />
-
             <LiquidMetal
               shape="circle"
               scale={0.75}
