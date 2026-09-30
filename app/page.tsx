@@ -79,7 +79,7 @@ export default function HomePage() {
         onSecondaryCtaClick={handleLaunchWebApp}
         features={[
           "Zero-Knowledge Privacy",
-          "Military AES-256 Encryption",
+          "Made By Hitansh",
           "Cross-Platform Sync",
         ]}
       />
