@@ -40,7 +40,7 @@ export default function DownloadDialog({
   }, [defaultPlatform, isOpen]);
 
   const websiteUrl = "https://vaultx-by-hitansh.netlify.app/";
-  const apkDownloadPath = "/VaultX-Latest.apk";
+  const apkDownloadPath = "/VaultX-Version-2.2.apk";
 
   if (!isOpen) return null;
 
@@ -163,17 +163,17 @@ export default function DownloadDialog({
                           VaultX for Android
                         </span>
                         <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 text-xs">
-                          APK Direct
+                          APK Direct (v2.2)
                         </Badge>
                       </div>
                       <p className="text-xs sm:text-sm text-slate-400">
-                        Package: VaultX-Latest.apk • Size: ~85 MB • OS: Android 8.0+
+                        Package: VaultX-Version-2.2.apk • Size: ~86.5 MB • OS: Android 8.0+
                       </p>
                     </div>
 
                     <a
                       href={apkDownloadPath}
-                      download="VaultX-Latest.apk"
+                      download="VaultX-Version-2.2.apk"
                       className="w-full sm:w-auto"
                     >
                       <Button
@@ -181,7 +181,7 @@ export default function DownloadDialog({
                         className="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-black font-bold px-6 py-5 rounded-xl shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 group transition-all"
                       >
                         <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
-                        Download APK
+                        Download APK (v2.2)
                       </Button>
                     </a>
                   </div>
@@ -206,7 +206,7 @@ export default function DownloadDialog({
                           2
                         </span>
                         <span>
-                          Open your phone notifications or Downloads folder and tap <strong>VaultX-Latest.apk</strong>.
+                          Open your phone notifications or Downloads folder and tap <strong>VaultX-Version-2.2.apk</strong>.
                         </span>
                       </li>
                       <li className="flex items-start gap-2.5">

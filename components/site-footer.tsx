@@ -36,11 +36,11 @@ export default function SiteFooter() {
             <ul className="space-y-2 text-sm text-slate-400">
               <li>
                 <a
-                  href="/VaultX-Latest.apk"
-                  download="VaultX-Latest.apk"
+                  href="/VaultX-Version-2.2.apk"
+                  download="VaultX-Version-2.2.apk"
                   className="hover:text-emerald-400 transition-colors"
                 >
-                  Android APK (v1.0.0)
+                  Android APK (v2.2)
                 </a>
               </li>
               <li>

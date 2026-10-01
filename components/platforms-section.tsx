@@ -20,7 +20,7 @@ interface PlatformsSectionProps {
 
 export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionProps) {
   const websiteUrl = "https://vaultx-by-hitansh.netlify.app/";
-  const apkDownloadPath = "/VaultX-Latest.apk";
+  const apkDownloadPath = "/VaultX-Version-2.2.apk";
 
   return (
     <section id="platforms" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
@@ -76,7 +76,7 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
                 <Smartphone className="w-7 h-7" />
               </div>
               <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/40 font-semibold shadow-sm">
-                APK Direct
+                APK Direct (v2.2)
               </Badge>
             </div>
 
@@ -90,7 +90,7 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
             <ul className="space-y-2 text-xs text-slate-200">
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Package: VaultX-Latest.apk (~85 MB)</span>
+                <span>Package: VaultX-Version-2.2.apk (v2.2 • ~86.5 MB)</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
@@ -104,13 +104,13 @@ export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionPro
           </div>
 
           <div className="pt-8 relative z-10">
-            <a href={apkDownloadPath} download="VaultX-Latest.apk" className="block w-full">
+            <a href={apkDownloadPath} download="VaultX-Version-2.2.apk" className="block w-full">
               <Button
                 size="lg"
                 className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full h-[48px] flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(16,185,129,0.45)] transition-all duration-150 active:scale-95 cursor-pointer select-none touch-manipulation group"
               >
                 <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
-                <span>Download APK</span>
+                <span>Download APK (v2.2)</span>
               </Button>
             </a>
           </div>
