@@ -53,7 +53,7 @@ export default function SiteFooter() {
               </li>
               <li>
                 <a
-                  href="https://vaultx-by-hitansh.netlify.app/"
+                  href="https://vaultx-by-hitansh.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-indigo-400 transition-colors inline-flex items-center gap-1"

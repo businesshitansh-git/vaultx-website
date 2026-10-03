@@ -18,7 +18,7 @@ export default function HomePage() {
   };
 
   const handleLaunchWebApp = () => {
-    window.open("https://vaultx-by-hitansh.netlify.app/", "_blank");
+    window.open("https://vaultx-by-hitansh.vercel.app/", "_blank");
   };
 
   return (

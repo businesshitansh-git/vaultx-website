@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: "VaultX — Fluid Security. Total Privacy.",
     description:
       "Next-generation digital security vault designed & developed by Hitansh Andraskar.",
-    url: "https://vaultx-by-hitansh.netlify.app/",
+    url: "https://vaultx-by-hitansh.vercel.app/",
     siteName: "VaultX",
     type: "website",
   },

@@ -19,7 +19,7 @@ Built with:
 3. **Cross-Platform Access**:
    - 🤖 **Android**: Direct one-click download for `VaultX-Latest.apk` (located in `/public/VaultX-Latest.apk`).
    - 🍏 **iPhone & iPad**: Visual 3-step installation guide to add the web app to iOS Home Screen via Safari.
-   - 💻 **Windows**: Direct link to launch the live web app (`https://vaultx-by-hitansh.netlify.app/`) with desktop PWA install guidance.
+   - 💻 **Windows**: Direct link to launch the live web app (`https://vaultx-by-hitansh.vercel.app/`) with desktop PWA install guidance.
 4. **Product Showcase**: Detailed breakdown of "What is VaultX?", "Why VaultX?", and core cryptographic features.
 5. **Credits**: Prominently featured `Designed & developed by Hitansh Andraskar`.
 
@@ -63,4 +63,4 @@ Follow the interactive prompts to link and deploy immediately.
 ## 👤 Credits
 
 **Designed & developed by Hitansh Andraskar**
-Website: [https://vaultx-by-hitansh.netlify.app/](https://vaultx-by-hitansh.netlify.app/)
+Website: [https://vaultx-by-hitansh.vercel.app/](https://vaultx-by-hitansh.vercel.app/)

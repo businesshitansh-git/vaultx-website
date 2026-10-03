@@ -65,7 +65,7 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
             Platforms
           </a>
           <a
-            href="https://vaultx-by-hitansh.netlify.app/"
+            href="https://vaultx-by-hitansh.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors flex items-center gap-1.5"
@@ -128,7 +128,7 @@ export default function SiteHeader({ onOpenDownload }: SiteHeaderProps) {
               Platforms
             </a>
             <a
-              href="https://vaultx-by-hitansh.netlify.app/"
+              href="https://vaultx-by-hitansh.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-base font-medium text-cyan-400 flex items-center gap-1.5 py-1"

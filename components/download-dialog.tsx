@@ -39,7 +39,7 @@ export default function DownloadDialog({
     }
   }, [defaultPlatform, isOpen]);
 
-  const websiteUrl = "https://vaultx-by-hitansh.netlify.app/";
+  const websiteUrl = "https://vaultx-by-hitansh.vercel.app/";
   const apkDownloadPath = "/VaultX-Version-2.2.apk";
 
   if (!isOpen) return null;

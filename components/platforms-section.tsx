@@ -19,7 +19,7 @@ interface PlatformsSectionProps {
 }
 
 export default function PlatformsSection({ onOpenIosGuide }: PlatformsSectionProps) {
-  const websiteUrl = "https://vaultx-by-hitansh.netlify.app/";
+  const websiteUrl = "https://vaultx-by-hitansh.vercel.app/";
   const apkDownloadPath = "/VaultX-Version-2.2.apk";
 
   return (
